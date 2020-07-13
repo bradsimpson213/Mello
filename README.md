@@ -1,4 +1,6 @@
 # MELLO - The Zen Trello Clone
+Why does going through your to do lists have to be so painful?  With Mello it isn't!
+A Zen inspired progress tracker allows you to relax and mindfully evalute your progress, and thoughtfully plan your future!  
 
 ## MVP
 - Boards
@@ -10,7 +12,7 @@
 - Board Settings (Background Colors/Images)
 - Hotkeys (Think this is part of React Beautiful DND)
 - Checklists
-- Zen music played in background
+- Zen music played in background while logged in
 - 
 
 ## TECHNOLOGY USED
