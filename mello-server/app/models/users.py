@@ -1,5 +1,7 @@
+from sqlalchemy import func
 from ..models import db
 from flask_login import UserMixin
+from sqlalchemy.orm import validates
 from werkzeug.security import generate_password_hash, check_password_hash
 
 class User(db.Model, UserMixin):
@@ -14,6 +16,19 @@ class User(db.Model, UserMixin):
 
     team = db.relationship("Team", back_populates="user")
 
+
+    @validates('username', 'email')
+    def val_user_email(self, key, value):
+        if key == 'username':
+            if not value:
+                raise AssertionError('Please provide a username')
+        if key == 'email':
+            if not value:
+                raise AssertionError('Please provide an email address')
+            if User.query.filter(User.email == value).first():
+                raise AssertionError('Your choosen email address already exists')
+        return value
+
     @property
     def password(self):
         return self.hashed_password
@@ -27,4 +42,4 @@ class User(db.Model, UserMixin):
 
     def to_dict(self):
         return { "id": self.id, "username": self.name, "email": self.email, 
-                "last_login": self.last_login, "created"; self.created } 
+                "last_login": self.last_login, "created": self.created } 

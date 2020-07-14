@@ -20,8 +20,9 @@ A Zen inspired progress tracker allows you to relax and mindfully evalute your p
 ### Client Side
 - React Client (maybe Redux)
 - React Beautiful DND (https://github.com/atlassian/react-beautiful-dnd)
-- Google Authorization
+- Google Authorization (maybe)
 - 
+
 ### Server Side
 - Flask / Python Server
 - Postgress Database
@@ -50,6 +51,7 @@ A Zen inspired progress tracker allows you to relax and mindfully evalute your p
 - public (boolean, default=false)
 - team (boolean, default=false)
 - teamId (integer, foreign key)
+- list_order (string, not null)
 - updated (datetime, not null)
 - created (datetime, not null)
 
@@ -57,6 +59,7 @@ A Zen inspired progress tracker allows you to relax and mindfully evalute your p
 - id (integer, primary key)
 - list_name (string, not null)
 - boardId (integer, foreign key)
+- card_order (string, not null)
 - duedate (datetime)
 - updated (datetime, not null)
 - created (datetime, not null)
