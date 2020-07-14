@@ -18,6 +18,7 @@ flask-sqlalchemy = "*"
 flask-migrate = "*"
 psycopg2-binary = "*"
 flask-login = "*"
+pyjwt = "*"
 
 [requires]
 python_version = "3.8"
