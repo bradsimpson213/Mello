@@ -6,14 +6,14 @@ class List(db.Model):
     list_name = db.Column(db.String(50), nullable=False)
     boardId = db.Column(db.Integer, db.ForeignKey("boards.id"), nullable=False)
     card_order = db.Column(db.String(300), nullable=False)
-    duedate = db.Column(db.DateTime)
+    due_date = db.Column(db.DateTime)
     updated = db.Column(db.DateTime, nullable=False)
     created = db.Column(db.DateTime,nullable=False)
 
     board = db.relationship("Board", back_populates="lists")
-
+    cards = db.relationship("Card", back_populates="to_list")
 
     def to_dict(self):
         return {"id": self.id, "list_name": self.list_name, "boardId": self.boardId,
-                "card_order": self.card_order, "duedate": self.duedate, "updated": self.updated,
+                "card_order": self.card_order, "due_date": self.due_date, "updated": self.updated,
                 "created": self.created }
