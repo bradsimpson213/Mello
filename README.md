@@ -31,22 +31,34 @@ A Zen inspired progress tracker allows you to relax and mindfully evalute your p
 ## DATABASE TABLES
 ### USERS
 - id (integer, primary key)
-- name (string, not null)
+- username (string, not null)
 - email (string, not null, unique)
-### TEAM
+- hashed_password (string, not null)
+- last_login (datetime, not null)
+- created (datetime, not null)
+
+### TEAMS
 - id (integer, primary key)
-- 
+- team_name (string, not null)
+- userId (int foreign key)
+
 ### BOARDS
 - id (integer, primary key)
+- userId (integer, foreign key)
 - board_name (string, not null)
 - board_image (string, not null)
-- public (boolean, not null)
+- public (boolean, default=false)
+- team (boolean, default=false)
+- teamId (integer, foreign key)
+- updated (datetime, not null)
+- created (datetime, not null)
 
 ### LISTS
 - id (integer, primary key)
 - list_name (string, not null)
 - boardId (integer, foreign key)
 - duedate (datetime)
+- updated (datetime, not null)
 - created (datetime, not null)
 
 ### CARDS
@@ -57,6 +69,7 @@ A Zen inspired progress tracker allows you to relax and mindfully evalute your p
 - color (string)
 - completed (boolean, default=false)
 - duedate (datetime)
+- updated (datetime, not null)
 - created (datetime, not null)
 
 ### COMMENTS
@@ -64,10 +77,14 @@ A Zen inspired progress tracker allows you to relax and mindfully evalute your p
 - userId (int, foreign key)
 - cardId (int, foreign key)
 - text (string, not null)
+- updated (datetime, not null)
 - created (datetime, not null)
+
 ### CHECKLIST
 - id (integer, primary key)
 - cardId (int, foreign key)
 - text (string, not null)
+- completed (boolean, default=false)
+- updated (datetime, not null)
 - completed (boolean, not null)
 
