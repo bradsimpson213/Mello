@@ -16,7 +16,7 @@ def require_auth(func):
       decoded_jwt = jwt.decode(access_token, Config.SECRET_KEY)
       print("Decoded:", decoded_jwt)
       user = User.query.filter(User.email == decoded_jwt.get('email')).first()
-      print("Auth Success!")
+      print(f"Auth Success! {user.username} logged in!")
     except:
       return {'error': 'Please Log In to Continue...'}, 401
     return func(*args, **kwargs)
