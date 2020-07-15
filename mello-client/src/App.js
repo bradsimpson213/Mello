@@ -1,8 +1,9 @@
 import React from 'react';
+import Home from './components/landing'
 
-function App() {
+const App = () => {
   return (
-    <h1>Hello Mello!</h1>
+    <Home />
   );
 }
 

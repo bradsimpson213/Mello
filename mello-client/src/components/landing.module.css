@@ -1,0 +1,11 @@
+body {
+    background: red;
+    font-family: Helvetica, sans-serif;
+    color: white;
+}
+
+.landingDescrip {
+    font-weight: 300;
+    font-size: 48 px;
+
+}
