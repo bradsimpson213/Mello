@@ -1,11 +1,16 @@
 body {
-    background: red;
+    background: linear-gradient(135deg, #0079bf, #5067c5);
     font-family: Helvetica, sans-serif;
-    color: white;
 }
 
-.landingDescrip {
-    font-weight: 300;
-    font-size: 48 px;
+.textTitle {
+    color: white;
+    font-weight: 700;
+    font-size: 48px;
+}
 
+.textDetail {
+    color: white;
+    font-weight: 500;
+    font-size: 24px;
 }
