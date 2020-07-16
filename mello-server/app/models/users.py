@@ -10,6 +10,8 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(100), nullable=False, unique=True)
     hashed_password = db.Column(db.String(100), nullable=False)
+    notification = db.Column(db.Integer, default=300000)
+    theme = db.Column(db.String(50))
     last_login = db.Column(db.DateTime, nullable=False)
     created = db.Column(db.DateTime, nullable=False)
 
@@ -40,5 +42,6 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     def to_dict(self):
-        return { "id": self.id, "username": self.name, "email": self.email, 
+        return { "id": self.id, "username": self.name, "email": self.email,
+                "notification": self.notification, "theme": self.theme, 
                 "last_login": self.last_login, "created": self.created } 

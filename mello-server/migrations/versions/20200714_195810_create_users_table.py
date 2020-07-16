@@ -23,6 +23,8 @@ def upgrade():
     sa.Column('username', sa.String(length=50), nullable=False),
     sa.Column('email', sa.String(length=100), nullable=False),
     sa.Column('hashed_password', sa.String(length=100), nullable=False),
+    sa.Column('notification', sa.Integer(), nullable=True),
+    sa.Column('theme', sa.String(length=50), nullable=True),
     sa.Column('last_login', sa.DateTime(), nullable=False),
     sa.Column('created', sa.DateTime(), nullable=False),
     sa.PrimaryKeyConstraint('id'),
