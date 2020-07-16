@@ -1,7 +1,58 @@
-body {
+body{
     background: linear-gradient(135deg, #0079bf, #5067c5);
     font-family: Helvetica, sans-serif;
 }
+
+.headerbar {
+    grid-column-start: 1;
+    grid-column-end: 6;
+    /* grid-row-start: 1;
+    grid-row-end: 2; */
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+ .logo {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    align-self: center;
+    justify-self: right;
+    height: 65px;
+    width: 180px;
+ }
+ 
+ .loginLink {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    align-self: center;
+    justify-self: right;
+    font-size: larger;
+ }
+
+ .signUpNav {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    align-self: center;
+    justify-self: center;
+ }
+
+.mainBox {
+    display: grid;
+    grid-template-rows: 1fr 3fr 3fr 1fr;
+    grid-template-rows: 1fr 4fr 1fr 1fr;
+}
+
+.textBox {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    grid-row-start: 2;
+    grid-row-end: 4;
+}
+
 
 .textTitle {
     color: white;
@@ -11,6 +62,24 @@ body {
 
 .textDetail {
     color: white;
-    font-weight: 500;
-    font-size: 24px;
+    font-weight: 300;
+    font-size: 26px;
+    font-stretch: ultra-expanded;
+    line-height: 1.5;
 }
+
+.emailSignUp {
+    display: flex;
+    flex-flow: row; 
+   
+}
+
+.bigImage {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    height: 600px;
+    width: 600px;
+    grid-row-start: 2;
+    grid-row-end: 4;    
+}
+
