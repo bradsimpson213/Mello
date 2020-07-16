@@ -15,7 +15,7 @@ class User(db.Model, UserMixin):
     last_login = db.Column(db.DateTime, nullable=False)
     created = db.Column(db.DateTime, nullable=False)
 
-    team = db.relationship("Team", back_populates="user")
+    # team = db.relationship("Team", back_populates="user")
 
 
     @validates('username', 'email')
@@ -42,6 +42,6 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     def to_dict(self):
-        return { "id": self.id, "username": self.name, "email": self.email,
+        return { "id": self.id, "username": self.username, "email": self.email,
                 "notification": self.notification, "theme": self.theme, 
                 "last_login": self.last_login, "created": self.created } 

@@ -40,7 +40,13 @@
     border-radius: 10px;
     height: 500px;
     width: 400px;
+}
 
+.linkBox {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .leftImage {
