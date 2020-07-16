@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useInputState from "./hooks/useInputState";
 import { Input, Button, Link } from "@chakra-ui/core";
 import styles from "./landing.module.css";
+import { baseUrl } from "../config";
 
 
 const Landing = () => {
@@ -10,12 +11,13 @@ const Landing = () => {
     const [author, setAuthor] = useState("");
 
     useEffect(() => {
-        const getQuote = async () => {
-            const res = await fetch("https://zenquotes.io/api/random");
+        (async () => {
+            const res = await fetch(`${baseUrl}/quotes`);
         const data = await res.json();
-        setQuote(data.q);
-        setAuthor(data.a);    
-        };
+        console.log(data);
+        setQuote(data.quote);
+        setAuthor(data.author);    
+        })();
     }, []);
 
     return (
@@ -39,6 +41,10 @@ const Landing = () => {
           </Button>
         </div>
         <div className={styles.mainBox}>
+          <div className={styles.quoteBox}>
+            <p className={styles.quoteDetail}>{`"${quote}"`}</p>
+            <p className={styles.author}>{`-${author}`}</p>
+          </div>
           <div className={styles.textBox}>
             <h1 className={styles.textTitle}>
               {" "}

@@ -13,13 +13,14 @@ A Zen inspired progress tracker allows you to relax and mindfully evalute your p
 - Hotkeys (Think this is part of React Beautiful DND)
 - Checklists
 - Zen music played in background while logged in
-- Random zen quote of the day
+- Random zen quote of the day (COMPLETED!)
 - Timed reminders to take breaks and breathe
 
 ## TECHNOLOGY USED
 ### Client Side
 - React Client (maybe Redux)
 - React Beautiful DND (https://github.com/atlassian/react-beautiful-dnd)
+- Chakra Component Library (https://chakra-ui.com/)
 - Google Authorization (maybe)
 - 
 
@@ -27,7 +28,7 @@ A Zen inspired progress tracker allows you to relax and mindfully evalute your p
 - Flask / Python Server
 - Postgress Database
 - SQLAlchemy / Alembec
-- 
+- ZenQuotes API (https://zenquotes.io/)
 
 ## DATABASE TABLES
 ### USERS

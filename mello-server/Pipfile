@@ -19,6 +19,8 @@ flask-migrate = "*"
 psycopg2-binary = "*"
 flask-login = "*"
 pyjwt = "*"
+flask-cors = "*"
+requests = "*"
 
 [requires]
 python_version = "3.8"
