@@ -1,0 +1,31 @@
+.headerbar {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+ .logo {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    align-self: center;
+    justify-self: right;
+    height: 65px;
+    width: 180px;
+ }
+ 
+ .loginLink {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    color: white;
+    align-self: center;
+    justify-self: right;
+    font-size: larger;
+    font-weight: bold;
+ }
+
+ .signUpNav {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    align-self: center;
+    justify-self: center;
+ }

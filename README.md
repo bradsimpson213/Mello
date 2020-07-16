@@ -36,6 +36,8 @@ A Zen inspired progress tracker allows you to relax and mindfully evalute your p
 - username (string, not null)
 - email (string, not null, unique)
 - hashed_password (string, not null)
+- notification (integer, default = 30000)
+- theme (string)
 - last_login (datetime, not null)
 - created (datetime, not null)
 
