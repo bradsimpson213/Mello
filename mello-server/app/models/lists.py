@@ -5,7 +5,7 @@ class List(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     list_name = db.Column(db.String(50), nullable=False)
     boardId = db.Column(db.Integer, db.ForeignKey("boards.id"), nullable=False)
-    card_order = db.Column(db.String(300), nullable=False)
+    card_order = db.Column(db.ARRAY(db.Integer), nullable=False)
     due_date = db.Column(db.DateTime)
     updated = db.Column(db.DateTime, nullable=False)
     created = db.Column(db.DateTime,nullable=False)

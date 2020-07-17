@@ -70,3 +70,7 @@ body{
     grid-row-end: 4;    
 }
 
+.footer {
+    color: white;
+    text-align: center;
+}

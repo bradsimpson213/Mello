@@ -22,7 +22,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('list_name', sa.String(length=50), nullable=False),
     sa.Column('boardId', sa.Integer(), nullable=False),
-    sa.Column('card_order', sa.String(length=300), nullable=False),
+    sa.Column('card_order', sa.ARRAY(sa.Integer()), nullable=False),
     sa.Column('due_date', sa.DateTime(), nullable=True),
     sa.Column('updated', sa.DateTime(), nullable=False),
     sa.Column('created', sa.DateTime(), nullable=False),

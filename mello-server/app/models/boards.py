@@ -8,12 +8,12 @@ class Board(db.Model):
     board_image = db.Column(db.String(150), nullable=False)
     public = db.Column(db.Boolean, default=False)
     team = db.Column(db.Boolean, default=False)
-    teamId = db.Column(db.Integer, db.ForeignKey("teams.id"), nullable=False)
-    list_order = db.Column(db.String(200), nullable=False)
+    teamId = db.Column(db.Integer, db.ForeignKey("teams.id"), nullable=True)
+    list_order = db.Column(db.ARRAY(db.Integer), nullable=False)
     updated = db.Column(db.DateTime, nullable=False)
     created = db.Column(db.DateTime, nullable=False)
 
-    lists = db.relationship("List", back_populates="board")
+    # lists = db.relationship("List", back_populates="board")
 
 
     def to_dict(self):

@@ -17,7 +17,6 @@ const Landing = () => {
         (async () => {
             const res = await fetch(`${baseUrl}/quotes`);
         const data = await res.json();
-        console.log(data);
         setQuote(data.quote);
         setAuthor(data.author);    
         })();
@@ -62,6 +61,7 @@ const Landing = () => {
             alt="Buddhist Temple"
           />
         </div>
+        <footer className={styles.footer}>© Copyright 2020 by Brad Simpson. All rights reserved.</footer>
       </>
     );
 }

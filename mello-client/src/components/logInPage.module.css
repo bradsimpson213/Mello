@@ -42,6 +42,15 @@
     width: 400px;
 }
 
+.loginForm {
+    height: 400px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
 .linkBox {
     display: flex;
     flex-flow: column;
