@@ -1,0 +1,7 @@
+.mainBox {
+    background: whitesmoke;
+    /* display: grid; */
+    font-family: Helvetica, sans-serif;
+    width: 100%;
+    height: 100%;
+}

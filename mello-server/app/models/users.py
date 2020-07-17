@@ -7,7 +7,7 @@ class User(db.Model, UserMixin):
     __tablename__ = "users"
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(50), nullable=False)
+    name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(100), nullable=False, unique=True)
     hashed_password = db.Column(db.String(100), nullable=False)
     notification = db.Column(db.Integer, default=300000)
@@ -18,11 +18,11 @@ class User(db.Model, UserMixin):
     # team = db.relationship("Team", back_populates="user")
 
 
-    @validates('username', 'email')
+    @validates('name', 'email')
     def val_user_email(self, key, value):
-        if key == 'username':
+        if key == 'name':
             if not value:
-                raise AssertionError('Please provide a username')
+                raise AssertionError('Please provide your name')
         if key == 'email':
             if not value:
                 raise AssertionError('Please provide an email address')
@@ -42,6 +42,6 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     def to_dict(self):
-        return { "id": self.id, "username": self.username, "email": self.email,
+        return { "id": self.id, "name": self.name, "email": self.email,
                 "notification": self.notification, "theme": self.theme, 
                 "last_login": self.last_login, "created": self.created } 

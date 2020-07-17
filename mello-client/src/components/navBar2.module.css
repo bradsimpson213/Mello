@@ -1,0 +1,41 @@
+.navBar2 {
+    background: linear-gradient(135deg, #0079bf, #5067c5);
+    display: grid;
+    grid-template-columns: 0.1fr 0.5fr 0.1fr 1fr 0.1fr 2fr 1fr 3fr 3fr 0.5fr 0.1fr;
+}
+
+.homeIcon {
+    grid-column: 2 / 3;
+    color: white;
+    height: 35px;
+    width: 35px;
+    align-self: center;
+}
+
+.boardDropDown {
+    grid-column: 4 / 5;
+    color: white;
+    background: linear-gradient(135deg, #0079bf, #5067c5);
+    height: 35px;
+    align-self: center;
+    justify-self: right;
+}
+
+.search {
+    grid-column: 6 / 7; 
+    align-self: center;
+    justify-self: left;
+    background-color: hsla(0,0%,100%,.3);
+}
+
+.logoWhite {
+    grid-column: 8 / 9;
+    height: 45px;
+    width: 180px;
+    align-self: center;
+}
+
+.avatar {
+    grid-column: 10 / 11;
+    align-self: center;
+}

@@ -25,24 +25,6 @@ const Landing = () => {
 
     return (
       <>
-        {/* <div className={styles.headerbar}>
-          <img
-            className={styles.logo}
-            src="https://mello-landing-images.s3.amazonaws.com/white-logo.png"
-            alt="Mello Logo"
-          />
-          <Link className={styles.loginLink} to="/login">
-            Log In
-          </Link>
-          <Button
-            className={styles.signUpNav}
-            variantColor="white"
-            color="steeleblue"
-            size="lg"
-          >
-            Sign Up
-          </Button>
-        </div> */}
         <NavBar1 className={styles.navBar}/>
         <div className={styles.mainBox}>
           <div className={styles.quoteBox}>
