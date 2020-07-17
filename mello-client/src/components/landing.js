@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useInputState from "./hooks/useInputState";
 import { Link } from 'react-router-dom';
 import { Input, Button } from "@chakra-ui/core";
-import NavBar1 from "./navBar1";
+import NavBar1 from "./navbars/navBar1";
 import styles from "./landing.module.css";
 import { baseUrl } from "../config";
 

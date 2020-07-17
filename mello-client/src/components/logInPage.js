@@ -23,20 +23,20 @@ const LogInPage = (props) => {
                   body: JSON.stringify({ email, password }),
                 });
                 const data = await res.json();
-
-                console.log(data);
-                setUser(data.user);
-
+                
                 if (data.error) {
                   setErrors(data.error);
                   return;
                 }
+                console.log(data.user);
+                setUser(data.user);
+                console.log(user);
+                setLoggedIn(true);
               } catch (err) {
             alert(
               "It appears you provided an incorrect login. Please take a moment and then try again."
             );
           }
-          setLoggedIn(true);
         };
     
     return (

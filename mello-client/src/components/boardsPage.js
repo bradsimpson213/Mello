@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import NavBar2 from './navBar2';
+import NavBar2 from './navbars/navBar2';
 import { baseUrl } from "../config";
-import styles from './boards.module.css';
+import styles from './boardsPage.module.css';
 
 const Boards = (props) => {
     const [boards, setBoards] = useState(null);
@@ -9,9 +9,10 @@ const Boards = (props) => {
    
 
     //THIS USE EFFECT GETS USERS BOARDS (ONLY ONCE ON MOUNT)
-    useEffect(() => {
-        setUser(props.user);
-        console.log(user['user']);
+    useEffect((props) => {
+        // setUser(props.user);
+        console.log("user info below");
+        console.log(props);
         (async () => {
             const res = await fetch(`${baseUrl}/boards/${user.id}`);
         const data = await res.json();
@@ -29,6 +30,7 @@ const Boards = (props) => {
                 </div>
                 <div>
                     <h2>Personal Boards</h2>
+                    
                     <h4>{boards}</h4>
                 </div>
                 <div>
