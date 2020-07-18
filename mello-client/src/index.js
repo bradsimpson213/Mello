@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import { ThemeProvider } from "@chakra-ui/core";
 import customTheme from "./customTheme";
-import App from './App';
+import AppWithContext from './AppWithContext';
 
 
 
@@ -12,7 +12,7 @@ ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={customTheme}>
       <BrowserRouter>
-        <App />
+        <AppWithContext />
       </BrowserRouter>
     </ThemeProvider>
   </React.StrictMode>,

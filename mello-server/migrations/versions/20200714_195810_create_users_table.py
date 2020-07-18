@@ -41,7 +41,7 @@ def upgrade():
         {'name': 'Brad Simpson', 'email': 'bradsimpson@icloud.com',
              'hashed_password': generate_password_hash('konadog4'), 'notification': 30000,
              'theme': None, 'last_login': datetime.datetime.now(),
-             'created': datetime.datetime.now()},
+             'created': datetime.datetime.now()}
         ]
     )
     # ### end Alembic commands ###

@@ -45,6 +45,15 @@ def upgrade():
              'created': datetime.datetime.now()},
             {'userId': 1, 'board_name': 'Work Project', 'board_image': 'https://mello-zen-images.s3.amazonaws.com/zen-3.jpg',
              'public': False, 'team': True, 'teamId': 1, 'list_order': [1,3], 'updated': datetime.datetime.now(),
+             'created': datetime.datetime.now()},
+            {'userId': 2, 'board_name': 'Coding Project', 'board_image': 'https://mello-zen-images.s3.amazonaws.com/zen-1.jpg',
+             'public': False, 'team': False, 'teamId': None, 'list_order': [1, 2], 'updated': datetime.datetime.now(),
+             'created': datetime.datetime.now()},
+            {'userId': 2, 'board_name': 'Home Remodel', 'board_image': 'https://mello-zen-images.s3.amazonaws.com/zen-2.jpg',
+             'public': False, 'team': False, 'teamId': None, 'list_order': [2, 3], 'updated': datetime.datetime.now(),
+             'created': datetime.datetime.now()},
+            {'userId': 2, 'board_name': 'Work Project', 'board_image': 'https://mello-zen-images.s3.amazonaws.com/zen-3.jpg',
+             'public': False, 'team': True, 'teamId': 1, 'list_order': [1, 3], 'updated': datetime.datetime.now(),
              'created': datetime.datetime.now()}
         ]
     )

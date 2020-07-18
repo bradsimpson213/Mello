@@ -1,48 +1,46 @@
-import React, {useState} from "react";
+import React, {useState, useContext } from "react";
 import useInputState from "./hooks/useInputState";
+import appContext from "../Context";
 import { Link, Redirect } from "react-router-dom";
 import { Input, Button } from "@chakra-ui/core";
-import styles from "./logInPage.module.css";
+import styles from "./LogInPage.module.css";
 import { baseUrl } from "../config";
 
 
-const LogInPage = (props) => {
+const LogInPage = () => {
     const [email, updateEmail] = useInputState("");
     const [password, updatePassword] = useInputState("");
     const [errors, setErrors] = useState(null);
     const [loggedIn, setLoggedIn] = useState(false);
-    const [user, setUser] = useState("");
+ 
+    const { login } = useContext(appContext);
 
     const loginSubmit = async (e) => {
         e.preventDefault();
 
-          try {
-                const res = await fetch(`${baseUrl}/users/login`, {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({ email, password }),
-                });
-                const data = await res.json();
+        try {
+            const res = await fetch(`${baseUrl}/users/login`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password }),
+            });
+            const data = await res.json();
                 
-                if (data.error) {
-                  setErrors(data.error);
-                  return;
-                }
-                console.log(data.user);
-                setUser(data.user);
-                console.log(user);
-                setLoggedIn(true);
-              } catch (err) {
-            alert(
-              "It appears you provided an incorrect login. Please take a moment and then try again."
-            );
-          }
+            if (data.error) {
+                setErrors(data.error);
+                return;
+            };
+            login(data.access_token, data.user);
+            setLoggedIn(true);
+            } catch (err) {
+                alert("It appears you provided an incorrect login. Please meditate for a moment and then try again.  Namaste!");
+            } 
         };
     
     return (
       <div>
         {loggedIn ? (
-          <Redirect to="/boards" user={user} />
+          <Redirect to="/boards" />
         ) : (
           <div className={styles.logInPage}>
             <div className={styles.logoDiv}>

@@ -20,12 +20,23 @@ def user_login():
     if user.check_password(data['password']):
         user.last_login = datetime.datetime.now()
         db.session.commit()
-  # add additional data here to return
         access_token = jwt.encode({'email': user.email}, Config.SECRET_KEY)
         return {"access_token": access_token.decode('UTF-8'), 'user': user.to_dict()}
     else:
         return {"error": "Incorrect password"}, 401
 
+
+# GET USER BY ID ROUTE
+@bp.route("/<int:userId>")
+def get_user_by_id(userId):
+
+    try:   
+        user = User.query.get(userId)
+        print("got your user here")
+        return {"user": user.to_dict()}
+    except AssertionError as message:
+        print(str(message))
+        return jsonify({"error": str(message)}), 400
 
 # CREATE USER ROUTE
 @bp.route("/create", methods=["POST"])

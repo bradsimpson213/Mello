@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Landing from './components/landing';
-import Login from './components/logInPage';
+import Landing from './components/LandingPage';
+import Login from './components/LogInPage';
 import Signup from './components/signUpPage';
-import BoardsPage from './components/boardsPage';
+import BoardsPage from './components/BoardsPage';
 import ListsPage from './components/listsPage'
 
 const App = () => {

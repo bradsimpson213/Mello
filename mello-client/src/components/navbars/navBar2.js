@@ -14,7 +14,6 @@ const NavBar2 = () => {
       <div className={styles.navBar2}>
         <FiHome
           className={styles.homeIcon}
-          onClick={<Redirect to="/boards" />}
         />
         <Menu>
           <MenuButton
@@ -43,7 +42,7 @@ const NavBar2 = () => {
         <Avatar
           className={styles.avatar}
           name={user}
-          src="https://bit.ly/broken-link"
+          src=""
         />
       </div>
     );
