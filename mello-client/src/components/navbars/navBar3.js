@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import { useDisclosure } from 'react-use-disclosure';
 import {
   Drawer,
   DrawerBody,
@@ -13,6 +12,7 @@ import {
   EditablePreview,
   Button, 
   Input,
+  useDisclosure
 } from "@chakra-ui/core";
 import styles from './NavBar3.module.css';
 
@@ -23,14 +23,17 @@ const NavBar3 = () => {
 
     return (
       <div className={styles.navBar3}>
-        <div className={styles.boardName}>
-          <Editable defaultValue="Take some chakra">
+        <Editable className={styles.boardName} defaultValue="Board Name...">
             <EditablePreview />
             <EditableInput />
-          </Editable>
-        </div>
+        </Editable>
         <div className={styles.drawerButton}>
-          <Button ref={btnRef} lefticon="add" variantColor="teal" onClick={onOpen}>
+          <Button
+            ref={btnRef}
+            leftIcon="add"
+            variantColor="teal"
+            onClick={onOpen}
+          >
             Show Menu
           </Button>
           <Drawer
@@ -42,12 +45,12 @@ const NavBar3 = () => {
             <DrawerOverlay />
             <DrawerContent>
               <DrawerCloseButton />
-              <DrawerHeader>Create your account</DrawerHeader>
-
+              <DrawerHeader>Menu</DrawerHeader>
               <DrawerBody>
+                <h4> Preferences </h4>
+                <h4> Change Background </h4>
                 <Input placeholder="Type here..." />
               </DrawerBody>
-
               <DrawerFooter>
                 <Button variant="outline" mr={3} onClick={onClose}>
                   Cancel

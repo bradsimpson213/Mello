@@ -1,5 +1,6 @@
 .navBar2 {
     background: linear-gradient(135deg, #0079bf, #5067c5);
+    height: 60px;
     display: grid;
     grid-template-columns: 0.1fr 0.5fr 0.1fr 1fr 0.1fr 2fr 1fr 3fr 3fr 0.5fr 0.1fr;
 }

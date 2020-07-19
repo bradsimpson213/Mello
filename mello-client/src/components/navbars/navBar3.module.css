@@ -1,9 +1,10 @@
 .navBar3 {
-    background: linear-gradient(135deg, #0079bf, #5067c5);
-    height: 75px;
+    background: gray;
+    height: 50px;
     display: grid;
-    grid-template-columns: 0.1fr 3.5fr 0.1fr 2fr 7fr 2fr 0.5fr;
+    grid-template-columns: 0.1fr 3.5fr 0.1fr 2fr 5fr 0.1fr 2fr 0.1fr;
     align-items: center;
+    margin: none;
 }
 
 .boardName {
@@ -11,10 +12,11 @@
     color: white;
     text-align: left;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 26px;
 
 }
 
 .drawerButton {
-    grid-column: 6 / 7 ;
+    grid-column: 7 / 8 ;
+    justify-self: right;
 }

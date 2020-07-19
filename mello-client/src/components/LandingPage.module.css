@@ -1,6 +1,8 @@
 body{
     background: linear-gradient(135deg, #0079bf, #5067c5);
     font-family: Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
 }
 
 .navBar {

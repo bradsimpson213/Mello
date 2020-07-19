@@ -1,25 +1,39 @@
 .listHolder {
     width: 350px;
+    display: flex;
+    flex-direction: column;
     background-color: lightgray;
     box-sizing: border-box;
     border: solid 2px black;
     border-radius: 7px;
     padding: 15px;
+    margin: 10px;
 
+}
+
+.listName {
+    color: black;
+    text-align: left;
+    font-weight: bold;
+    font-size: 18px;
 }
 
 .listCardArea {
     display: flex;
     flex-flow: column;
+    flex-wrap: nowrap;
     box-sizing: border-box;
     border: solid 1px darkgray;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     background-color: whitesmoke;
 }
 
+.collapseCard {
+    height: 150px;
+}
+
 .textArea {
-    overflow-y: scroll;
-    overflow-x: auto;
-    width: 1em;
+    resize: none;
+    max-width: 280px;
     border: solid 1px darkgray;
 }

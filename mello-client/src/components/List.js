@@ -1,7 +1,8 @@
 import React from 'react';
 import useToggle from './hooks/useToggle';
 import useInputState from './hooks/useInputState'
-import { Button, CloseButton, Collapse, Textarea } from '@chakra-ui/core';
+import { Button, CloseButton, Collapse, Editable,
+     EditableInput, EditablePreview, Textarea } from '@chakra-ui/core';
 import styles from './List.module.css';
 
 
@@ -27,6 +28,10 @@ const List = () => {
 
     return (
       <div className={styles.listHolder}>
+        <Editable className={styles.listName} defaultValue="List Name...">
+          <EditablePreview />
+          <EditableInput />
+        </Editable>
         <div className={styles.listCardArea}>
           <h3>Cards will go Here</h3>
         </div>
@@ -39,8 +44,8 @@ const List = () => {
         >
           Add another card
         </Button>
-        <Collapse mt={4} isOpen={show}>
-          <form onSubmit={ saveCard }>
+        <Collapse className={styles.collapseCard} isOpen={show}>
+          <form onSubmit={saveCard}>
             <Textarea
               className={styles.textArea}
               value={text}
