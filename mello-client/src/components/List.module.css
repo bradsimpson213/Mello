@@ -1,0 +1,25 @@
+.listHolder {
+    width: 350px;
+    background-color: lightgray;
+    box-sizing: border-box;
+    border: solid 2px black;
+    border-radius: 7px;
+    padding: 15px;
+
+}
+
+.listCardArea {
+    display: flex;
+    flex-flow: column;
+    box-sizing: border-box;
+    border: solid 1px darkgray;
+    overflow-y: scroll;
+    background-color: whitesmoke;
+}
+
+.textArea {
+    overflow-y: scroll;
+    overflow-x: auto;
+    width: 1em;
+    border: solid 1px darkgray;
+}

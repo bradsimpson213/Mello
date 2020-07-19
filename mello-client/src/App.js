@@ -4,7 +4,7 @@ import Landing from './components/LandingPage';
 import Login from './components/LogInPage';
 import Signup from './components/signUpPage';
 import BoardsPage from './components/BoardsPage';
-import ListsPage from './components/listsPage'
+import ListsPage from './components/ListsPage'
 
 const App = () => {
   return (

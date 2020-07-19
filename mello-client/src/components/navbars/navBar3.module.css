@@ -1,0 +1,20 @@
+.navBar3 {
+    background: linear-gradient(135deg, #0079bf, #5067c5);
+    height: 75px;
+    display: grid;
+    grid-template-columns: 0.1fr 3.5fr 0.1fr 2fr 7fr 2fr 0.5fr;
+    align-items: center;
+}
+
+.boardName {
+    grid-column: 2 / 3 ;
+    color: white;
+    text-align: left;
+    font-weight: bold;
+    font-size: 30px;
+
+}
+
+.drawerButton {
+    grid-column: 6 / 7 ;
+}

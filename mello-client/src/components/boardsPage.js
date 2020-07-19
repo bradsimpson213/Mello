@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import appContext from "../Context";
-import NavBar2 from './navbars/navBar2';
+import NavBar2 from './navbars/NavBar2';
 import { baseUrl } from "../config";
 import styles from './BoardsPage.module.css';
 

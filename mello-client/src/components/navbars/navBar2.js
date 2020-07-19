@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 import { FiHome } from 'react-icons/fi';
 import { FaTrello } from 'react-icons/fa';
-import styles from './navBar2.module.css';
+import styles from './NavBar2.module.css';
 import { Avatar, Button, Icon, Input, InputGroup, InputRightElement, 
     Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/core";
 

@@ -1,0 +1,10 @@
+.listsContainer {
+    display: flex;
+    height: 100vh;
+    width:100vw;
+    flex-flow: row;
+    overflow-x: scroll;
+    background-image: url('https://mello-zen-images.s3.amazonaws.com/zen-3.jpg');
+    background-size: cover;
+
+}
