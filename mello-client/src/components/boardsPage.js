@@ -11,30 +11,34 @@ const Boards = (props) => {
 
     //THIS USE EFFECT GETS USERS BOARDS (ONLY ONCE ON MOUNT)
     useEffect(() => {
-        console.log(id);
         (async () => {
             const res = await fetch(`${baseUrl}/boards/${id}`);
         const data = await res.json();
-        console.log(data);
         setBoards(data);
+        console.log(boards);
         })();
     }, []);
 
     return (
-        <>
-            <NavBar2 />
-            <div className={styles.mainBox}>
-                <div>
-                    <h2>Boards</h2>
-                </div>
-                <div>
-                    <h2>Personal Boards</h2>
-                </div>
-                <div>
-                    <h2>Team Boards</h2>
-                </div>
-            </div>
-        </>
+      <>
+        <NavBar2 />
+        <div className={styles.mainBox}>
+          <div>
+            <h2>Boards</h2>
+          </div>
+          <div>
+            <h2>Personal Boards</h2>
+            {/* {boards.map((board) => (
+                <div className={styles.board} background={`${board.board_image}`}>
+                    <p>[board.board_name</p>
+                </div> 
+            ))} */}
+          </div>
+          <div>
+            <h2>Team Boards</h2>
+          </div>
+        </div>
+      </>
     );
 };
 

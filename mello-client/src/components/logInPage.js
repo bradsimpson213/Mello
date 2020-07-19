@@ -37,6 +37,12 @@ const LogInPage = () => {
             } 
         };
     
+    // const demoLogin = () => {
+    //     updateEmail("demo@gmail.com");
+    //     updatePassword("demo1");
+    // };
+
+
     return (
       <div>
         {loggedIn ? (

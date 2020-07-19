@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import App from "./App.js"
 import AppContext from "./Context";
+import { baseUrl } from "./config";
 
 const AppWithContext = () => {
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -13,16 +14,16 @@ const AppWithContext = () => {
     let isToken = true;
     try {
       isToken = !!JSON.parse(token);
-    } catch (err) {
-      //do nothing, token is string
-    }
+    } catch (err) {};
+
     if (id && isToken) {
       (async () => {
         const res = await fetch(
-          `${process.env.REACT_APP_SERVER_URL}/users/${id}`,
+          `${baseUrl}/users/${id}`,
           {
             headers: {
-              "Content-Type": "application/json",
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
               Authorization: token,
             },
           }
@@ -30,7 +31,7 @@ const AppWithContext = () => {
         const { user } = await res.json();
         setUser(user);
         setId(user.id);
-        localStorage.setItem("user", user);
+        localStorage.setItem("user", JSON.stringify(user));
       })();
     }
   }, [token]);
@@ -38,7 +39,7 @@ const AppWithContext = () => {
   const login = (token, user) => {
     localStorage.setItem("token", token);
     localStorage.setItem("id", user.id);
-    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem("user", user);
     setToken(token);
     setUser(user);
     setId(user.id);
