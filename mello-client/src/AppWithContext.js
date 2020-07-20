@@ -7,6 +7,33 @@ const AppWithContext = () => {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState("");
   const [id, setId] = useState("");
+  const [boardOrg, setBoardOrg] = useState({
+    cards: {
+      "card-1": { id: "card-1", content: "Create new project" },
+      "card-2": { id: "card-2", content: "Plan database structure" },
+      "card-3": { id: "card-3", content: "Document project in readme file" },
+      "card-4": { id: "card-4", content: "Code.  Like a whole lot." },
+      "card-5": { id: "card-5", content: "Code some more." },
+    },
+    lists: {
+      "list-1": {
+        id: "list-1",
+        title: "Project start to do items",
+        cardIds: ["card-1", "card-2", "card-3", "card-4"],
+      },
+      "list-2": {
+        id: "list-2",
+        title: "In progress",
+        cardIds: ["card-5"],
+      },
+      "list-3": {
+        id: "list-3",
+        title: "Completed",
+        cardIds: [],
+      },
+    },
+    listOrder: ["list-1", "list-2", "list-3"],
+  });
 
   useEffect(() => {
     let id = JSON.parse(localStorage.getItem("id"));
@@ -53,24 +80,24 @@ const AppWithContext = () => {
 //     setId(null);
 //   };
 
-  const boardOrg = {
-    cards: {
-      "card-1": { id: "card-1", content: "Create new project" },
-      "card-2": { id: "card-2", content: "Plan database structure" },
-      "card-3": { id: "card-3", content: "Document project in readme file" },
-      "card-4": { id: "card-4", content: "Code.  Like a whole lot." },
-    },
-    lists: {
-      'list-1': {
-        id: 'list-1', 
-        title: "Project start to do items",
-        cardIds: ['card-1', 'card-2', 'card-3', 'card-4'],
-      },
-    },
-    listOrder:['list-1'],
-  };
+  // const boardOrg = {
+  //   cards: {
+  //     "card-1": { id: "card-1", content: "Create new project" },
+  //     "card-2": { id: "card-2", content: "Plan database structure" },
+  //     "card-3": { id: "card-3", content: "Document project in readme file" },
+  //     "card-4": { id: "card-4", content: "Code.  Like a whole lot." },
+  //   },
+  //   lists: {
+  //     'list-1': {
+  //       id: 'list-1', 
+  //       title: "Project start to do items",
+  //       cardIds: ['card-1', 'card-2', 'card-3', 'card-4'],
+  //     },
+  //   },
+  //   listOrder:['list-1'],
+  // };
 
-  const context = { login, user, id, boardOrg };
+  const context = { login, user, id, boardOrg, setBoardOrg };
   return (
     <AppContext.Provider value={context}>
       <App />

@@ -19,7 +19,7 @@ const ListsPage = () => {
     const [text, updateText, resetText] = useInputState();
     const [hidden, toggleHidden] = useToggle(false);
 
-    const { boardOrg } = useContext(appContext);
+    const { boardOrg, setBoardOrg } = useContext(appContext);
 
     const saveList = () => {
         //TODO
@@ -37,8 +37,70 @@ const ListsPage = () => {
         toggleShow();
     };
 
-    const onDragEnd = () => {
-        //TODO
+    const onDragStart = () => {
+        //add drag item tilt here will need to add onDrafStert={onDragStart} to component
+    };
+
+     const onDragEnd = (result) => {
+        //cancel drag item tilt here
+        const { destination, source, draggableId } = result;
+        //Chekcs to make sure something was actually moved to a new spot
+        if (!destination) {
+            return;
+        }; //Card wasn't placed on a droppable area
+        if ( destination.droppableId === source.droppableId && 
+            destination.index === source.index) {
+            return;
+        }; //Card start and end was same location
+
+        // Moving inside the same list:
+        const start = boardOrg.lists[source.droppableId];
+        const finish = boardOrg.lists[destination.droppableId]
+       
+        if (start === finish) {
+            const newCardIds = Array.from(start.cardIds)
+            newCardIds.splice(source.index, 1);
+            newCardIds.splice(destination.index, 0, draggableId);
+
+            const newList = {
+                ...start,
+                cardIds: newCardIds,
+            };
+
+            const newContext = {
+                ...boardOrg,
+                lists: {
+                    ...boardOrg.lists,
+                    [newList.id]: newList,
+                },
+            };
+            setBoardOrg(newContext);
+            return;
+        };
+
+        // Moving from list to list:
+        const startCardIds = Array.from(start.cardIds);
+        startCardIds.splice(source.index, 1);
+        const newStart = {
+            ...start,
+            cardIds: startCardIds,
+        };
+
+        const finishCardIds = Array.from(finish.cardIds);
+        finishCardIds.splice(destination.index, 0, draggableId);
+        const newFinish = {
+            ...finish,
+            cardIds: finishCardIds,
+        };
+        const newContext = {
+            ...boardOrg,
+            lists: {
+            ...boardOrg.lists,
+            [newStart.id]: newStart,
+            [newFinish.id]: newFinish,
+            },
+        };
+        setBoardOrg(newContext);
     };
 
     return (

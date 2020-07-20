@@ -1,5 +1,7 @@
 .cardHolder {
     border: 1px solid gray;
+    border-radius: 5px;
+    background: whitesmoke;
     text-align: center;
     margin: 2px;
 }

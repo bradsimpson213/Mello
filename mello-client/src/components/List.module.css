@@ -25,7 +25,7 @@
     flex-wrap: nowrap;
     box-sizing: border-box;
     border: solid 1px darkgray;
-    background-color: whitesmoke;
+    background-color: lightgray;
 }
 
 .collapseCard {

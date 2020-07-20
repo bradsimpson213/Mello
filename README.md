@@ -1,6 +1,6 @@
 # MELLO - The Zen Trello Clone
 Why does going through your to do lists have to be so painful?  With Mello it isn't!
-A Zen inspired progress tracker allows you to relax and mindfully evalute your progress, and thoughtfully plan your future!  
+A Zen inspired Kanban board allows you to relax and mindfully evalute your progress, and thoughtfully plan your future!  
 
 ## MVP
 - Boards
@@ -18,7 +18,7 @@ A Zen inspired progress tracker allows you to relax and mindfully evalute your p
 
 ## TECHNOLOGY USED
 ### Client Side
-- React Client (maybe Redux)
+- React Client 
 - React Beautiful DND (https://github.com/atlassian/react-beautiful-dnd)
 - Chakra Component Library (https://chakra-ui.com/)
 - Google Authorization (maybe)
@@ -54,7 +54,7 @@ A Zen inspired progress tracker allows you to relax and mindfully evalute your p
 - public (boolean, default=false)
 - team (boolean, default=false)
 - teamId (integer, foreign key)
-- list_order (string, not null)
+- list_order ARRAY(string, not null)
 - updated (datetime, not null)
 - created (datetime, not null)
 
@@ -62,7 +62,7 @@ A Zen inspired progress tracker allows you to relax and mindfully evalute your p
 - id (integer, primary key)
 - list_name (string, not null)
 - boardId (integer, foreign key)
-- card_order (string, not null)
+- card_order ARRAY(string, not null)
 - duedate (datetime)
 - updated (datetime, not null)
 - created (datetime, not null)
