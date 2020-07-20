@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 // import { Redirect } from 'react-router-dom';
 import { FiHome } from 'react-icons/fi';
 import { FaTrello } from 'react-icons/fa';
 import styles from './NavBar2.module.css';
 import { Avatar, Button, Icon, Input, InputGroup, InputRightElement, 
     Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/core";
+import appContext from '../../Context'
 
 
 const NavBar2 = () => {
-    const [user, setUser] = useState('Demo User')
+    
+    const { user } = useContext(appContext);
 
     return (
       <div className={styles.navBar2}>
@@ -41,7 +43,7 @@ const NavBar2 = () => {
         />
         <Avatar
           className={styles.avatar}
-          name={user}
+          name={user.name}
           src=""
         />
       </div>

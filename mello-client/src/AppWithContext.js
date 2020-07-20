@@ -53,7 +53,24 @@ const AppWithContext = () => {
 //     setId(null);
 //   };
 
-  const context = { login, user, id };
+  const boardOrg = {
+    cards: {
+      "card-1": { id: "card-1", content: "Create new project" },
+      "card-2": { id: "card-2", content: "Plan database structure" },
+      "card-3": { id: "card-3", content: "Document project in readme file" },
+      "card-4": { id: "card-4", content: "Code.  Like a whole lot." },
+    },
+    lists: {
+      'list-1': {
+        id: 'list-1', 
+        title: "Project start to do items",
+        cardIds: ['card-1', 'card-2', 'card-3', 'card-4'],
+      },
+    },
+    listOrder:['list-1'],
+  };
+
+  const context = { login, user, id, boardOrg };
   return (
     <AppContext.Provider value={context}>
       <App />
