@@ -38,7 +38,6 @@ const ListsPage = () => {
           },
         };
         newBoardOrg.listOrder.push(newListId);
-        console.log(newBoardOrg);
         setBoardOrg(newBoardOrg);
         hideCollapse();
     };

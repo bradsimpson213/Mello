@@ -6,17 +6,39 @@ import { Button, CloseButton, Collapse, Editable,
 import { Draggable, Droppable } from 'react-beautiful-dnd';
 import styles from './List.module.css';
 import Card from './Card';
-// import appContext from '../Context';
+import appContext from '../Context';
 
 
 const List = (props) => {
     const [show, toggleShow] = useToggle(false);
-    const [text, updateText, resetText] = useInputState();
+    const [cardText, updateCardText, resetText] = useInputState();
     const [hidden, toggleHidden] = useToggle(false);
 
-    // const { boardOrg } = useContext(appContext);
+    const { boardOrg, setBoardOrg } = useContext(appContext);
 
-    const saveCard = () => {};
+    const addCard = (e) => {
+        e.preventDefault();
+        const listId = props.list.id
+        const newCardId = `card-${Object.keys(boardOrg.cards).length + 1}`;
+        const newCard = {
+            id: newCardId,
+            content: cardText,
+        };
+
+        const newBoardOrg = {
+             ...boardOrg,
+             cards: {
+                 ...boardOrg.cards,
+                [newCardId]: newCard,
+             }
+   
+        };
+        newBoardOrg.lists[listId].cardIds.push(newCardId);
+
+        console.log(newBoardOrg);
+        setBoardOrg(newBoardOrg);
+        hideCollapse();
+    };
 
     const hideCollapse = () => {
         resetText();
@@ -72,15 +94,15 @@ const List = (props) => {
               Add another card
             </Button>
             <Collapse className={styles.collapseCard} isOpen={show}>
-              <form onSubmit={saveCard}>
+              <form onSubmit={addCard}>
                 <Textarea
                   className={styles.textArea}
-                  value={text}
-                  onChange={updateText}
+                  value={cardText}
+                  onChange={updateCardText}
                   placeholder="Enter a title for this card..."
                 />
                 <div>
-                  <Button variantColor="green">Add Card</Button>
+                  <Button variantColor="green" type='submit' >Add Card</Button>
                   <CloseButton onClick={hideCollapse} />
                 </div>
               </form>
