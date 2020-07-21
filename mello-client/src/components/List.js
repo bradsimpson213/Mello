@@ -60,14 +60,16 @@ const List = (props) => {
             ref={provided.innerRef}
             {...provided.dragHandleProps}
           >
-            <Editable
-              className={styles.listName}
-              defaultValue="List Name..."
-              value={props.list.title}
-            >
-              <EditablePreview />
-              <EditableInput />
-            </Editable>
+            <div>
+                <Editable
+                className={styles.listName}
+                defaultValue="List Name..."
+                value={props.list.title}
+                >
+                <EditablePreview />
+                <EditableInput />
+                </Editable>
+            </div>
             <Droppable droppableId={props.list.id} type="card">
               {(provided) => (
                 <div
@@ -102,7 +104,9 @@ const List = (props) => {
                   placeholder="Enter a title for this card..."
                 />
                 <div>
-                  <Button variantColor="green" type='submit' >Add Card</Button>
+                  <Button variantColor="green" type="submit">
+                    Add Card
+                  </Button>
                   <CloseButton onClick={hideCollapse} />
                 </div>
               </form>
