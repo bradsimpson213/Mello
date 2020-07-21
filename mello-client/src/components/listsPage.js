@@ -16,18 +16,36 @@ import styles from './ListsPage.module.css';
 
 const ListsPage = () => {
     const [show, toggleShow] = useToggle(false);
-    const [text, updateText, resetText] = useInputState();
+    const [listText, updateListText, resetListText] = useInputState();
     const [hidden, toggleHidden] = useToggle(false);
 
     const { boardOrg, setBoardOrg } = useContext(appContext);
 
-    const saveList = () => {
-        //TODO
+    const addList = (e) => {
+        e.preventDefault();
+        const newListId = `list-${boardOrg.listOrder.length + 1}`;
+         const newList = {
+           id: newListId,
+           title: listText,
+           cardIds: [],
+         };
+        
+        const newBoardOrg = {
+          ...boardOrg,
+          lists: {
+            ...boardOrg.lists,
+            [newListId]: newList,
+          },
+        };
+        newBoardOrg.listOrder.push(newListId);
+        console.log(newBoardOrg);
+        setBoardOrg(newBoardOrg);
+        hideCollapse();
     };
 
 
     const hideCollapse = () => {
-        resetText();
+        resetListText();
         toggleShow();
         toggleHidden();
     };
@@ -134,9 +152,9 @@ const ListsPage = () => {
                         return <List key={list.id} list={list} cards={cards} index={index} />;
                         })}
                     {provided.placeholder}
-                <div className={styles.newList}>
+                <div className={ styles.newList }>
                   <Button
-                    className={styles.newListButton}
+                    className={ styles.newListButton }
                     leftIcon="add"
                     variantColor="darkgray"
                     variant="outline"
@@ -146,19 +164,19 @@ const ListsPage = () => {
                     Add another list
                   </Button>
                   <Collapse
-                    className={styles.collapseList}
+                    className={ styles.collapseList }
                     mt={4}
                     isOpen={show}
                   >
-                    <form onSubmit={saveList}>
+                    <form onSubmit={ addList }>
                       <Input
-                        className={styles.newListInput}
-                        value={text}
-                        onChange={updateText}
+                        className={ styles.newListInput }
+                        value={ listText }
+                        onChange={updateListText}
                         placeholder="Enter list title..."
                       />
                       <div>
-                        <Button variantColor="green">Add List</Button>
+                        <Button variantColor="green" type="submit" >Add List</Button>
                         <CloseButton onClick={hideCollapse} />
                       </div>
                     </form>
