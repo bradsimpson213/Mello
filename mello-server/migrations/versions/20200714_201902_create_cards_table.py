@@ -22,7 +22,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=100), nullable=False),
     sa.Column('listId', sa.Integer(), nullable=False),
-    sa.Column('description', sa.String(length=500), nullable=True),
+    sa.Column('details', sa.String(length=500), nullable=True),
     sa.Column('color', sa.String(length=15), nullable=True),
     sa.Column('completed', sa.Boolean(), nullable=True),
     sa.Column('due_date', sa.DateTime(), nullable=True),
@@ -34,15 +34,15 @@ def upgrade():
     # ### end Alembic commands ###
     op.bulk_insert(cards_table,
         [
-            { 'title': 'Create new project', "listId": 1, 'description': 'Create new React project','color': None,
+            { 'title': 'Create new project', "listId": 1, 'details': 'Create new React project','color': None,
               'completed': False, 'due_date': None, 'updated': datetime.datetime.now(), 'created': datetime.datetime.now() },
-            {'title': 'Plan database structure', "listId": 1, 'description': 'Create models and schema', 'color': None,
+            {'title': 'Plan database structure', "listId": 1, 'details': 'Create models and schema', 'color': None,
                 'completed': False, 'due_date': None, 'updated': datetime.datetime.now(), 'created': datetime.datetime.now()},
-            {'title': 'Document project in readme file', "listId": 1, 'description': 'Create Readme file with MVP and Technology', 'color': None,
+            {'title': 'Document project in readme file', "listId": 1, 'details': 'Create Readme file with MVP and Technology', 'color': None,
                 'completed': False, 'due_date': None, 'updated': datetime.datetime.now(), 'created': datetime.datetime.now()},
-            {'title': 'Code.  Like a whoe lot', "listId": 1, 'description': 'Get that code out on VSCode!', 'color': None,
+            {'title': 'Code.  Like a whoe lot', "listId": 1, 'details': 'Get that code out on VSCode!', 'color': None,
                 'completed': False, 'due_date': None, 'updated': datetime.datetime.now(), 'created': datetime.datetime.now()},
-            {'title': 'Code some more.', "listId": 1, 'description': 'Are you done coding?  No?  Then code more!', 'color': None,
+            {'title': 'Code some more.', "listId": 2, 'details': 'Are you done coding?  No?  Then code more!', 'color': None,
                 'completed': False, 'due_date': None, 'updated': datetime.datetime.now(), 'created': datetime.datetime.now()}
         ]
     )

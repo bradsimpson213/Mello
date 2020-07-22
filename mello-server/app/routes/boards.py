@@ -18,10 +18,13 @@ def get_baord_details(boardId):
     if board:
         cards = []
         blists = List.query.filter(List.boardId == board.id).all()
+
         for blist in blists:
             list_cards = Card.query.filter(Card.listId == blist.id).all()
             dict_cards = [list_card.to_dict() for list_card in list_cards]
             cards.append(dict_cards)
+            print(cards)
+            
         dict_lists = [list1.to_dict() for list1 in blists]
        
         return { 'board': board.to_dict(), 'lists': dict_lists, 'cards': cards }   

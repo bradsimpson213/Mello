@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import {
   Button,
   CloseButton,
@@ -12,6 +12,7 @@ import NavBar2 from './navbars/NavBar2';
 import NavBar3 from './navbars/NavBar3';
 import List from './List';
 import appContext from '../Context';
+import { baseUrl } from "../config";
 import styles from './ListsPage.module.css';
 
 const ListsPage = () => {
@@ -21,6 +22,17 @@ const ListsPage = () => {
 
     const { boardOrg, setBoardOrg } = useContext(appContext);
 
+     //THIS USE EFFECT GETS BOARDS LISTS/CARDS (ONLY ONCE ON MOUNT)
+    useEffect(() => {
+        (async () => {
+            const res = await fetch(`${baseUrl}/boards/details/4`);
+        const data = await res.json();
+        const { board, cards, lists } = data;
+        console.log(cards);
+        })();
+    }, []);
+    
+    
     const addList = (e) => {
         e.preventDefault();
         const newListId = `list-${boardOrg.listOrder.length + 1}`;

@@ -5,7 +5,7 @@ class Card(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
     listId = db.Column(db.Integer, db.ForeignKey("lists.id"), nullable=False)
-    description = db.Column(db.String(500))
+    details = db.Column(db.String(500))
     color = db.Column(db.String(15))
     completed = db.Column(db.Boolean, default=False)
     due_date = db.Column(db.DateTime)
@@ -19,5 +19,5 @@ class Card(db.Model):
 
     def to_dict(self):
         return { "id": self.id, "title": self.title, "listId": self.listId,
-                "description": self.description, "color": self.color, "completed": self.completed,
+                "details": self.details, "color": self.color, "completed": self.completed,
                 "due_date": self.due_date, "updated": self.updated, "created": self.created }
