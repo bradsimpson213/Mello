@@ -13,7 +13,7 @@ class Board(db.Model):
     updated = db.Column(db.DateTime, nullable=False)
     created = db.Column(db.DateTime, nullable=False)
 
-    # lists = db.relationship("List", back_populates="board")
+    lists = db.relationship("List", back_populates="board")
 
 
     def to_dict(self):

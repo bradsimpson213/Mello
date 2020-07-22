@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import {
   Button,
+  Editable,
+  EditablePreview,
+  EditableInput,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -17,6 +20,7 @@ import styles from './Card.module.css';
 const Card = (props) => {
 
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const [cardTitle, setCardTitle] = useState(props.card.content)
     
     return (
       <Draggable draggableId={props.card.id} index={props.index}>
@@ -26,14 +30,28 @@ const Card = (props) => {
             {...provided.draggableProps}
             {...provided.dragHandleProps}
             className={styles.cardHolder}
+            onClick={onOpen}
           >
-            {/* <h4>{props.card.content}</h4> */}
-            <Button onClick={onOpen}>{props.card.content}</Button>
+            <h4>{props.card.content}</h4>
+            {/* <Button onClick={onOpen}>{props.card.content}</Button> */}
 
-            <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
+            <Modal
+              blockScrollOnMount={false}
+              size="xl"
+              isOpen={isOpen}
+              onClose={onClose}
+            >
               <ModalOverlay />
               <ModalContent>
-                <ModalHeader>{props.card.content}</ModalHeader>
+                <ModalHeader>
+                  <Editable
+                    defaultValue="Card title..."
+                    value={cardTitle}
+                  >
+                    <EditablePreview />
+                    <EditableInput />
+                  </Editable>
+                </ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
                   <Text fontWeight="bold" mb="1rem">

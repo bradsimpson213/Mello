@@ -9,7 +9,7 @@ class Comment(db.Model):
     udated= db.Column(db.DateTime, nullable=False)
     created = db.Column(db.DateTime, nullable=False)
 
-    card = db.relationship("Card", back_populates="comment")
+    # card = db.relationship("Card", back_populates="comment")
 
 
     def to_dict(self):

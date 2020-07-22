@@ -13,8 +13,8 @@ class Card(db.Model):
     created = db.Column(db.DateTime, nullable=False)
 
     to_list = db.relationship("List", back_populates="cards")
-    comment = db.relationship("Comment", back_populates="card")
-    checklist = db.relationship("Checklist", back_populates="cardcheck")
+    # comment = db.relationship("Comment", back_populates="card")
+    # checklist = db.relationship("Checklist", back_populates="cardcheck")
 
 
     def to_dict(self):

@@ -9,7 +9,7 @@ class Checklist(db.Model):
     updated = db.Column(db.DateTime, nullable=False)
     created = db.Column(db.DateTime, nullable=False)
 
-    cardcheck = db.relationship("Card", back_populates="checklist")
+    # cardcheck = db.relationship("Card", back_populates="checklist")
 
 
     def to_dict(self):

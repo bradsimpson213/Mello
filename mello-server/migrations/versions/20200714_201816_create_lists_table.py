@@ -32,11 +32,11 @@ def upgrade():
     # ### end Alembic commands ###
     op.bulk_insert(lists_table,
         [
-            {'list_name': 'Project starting to do items', 'boardId': 2, 'card_order': [ "card-1", "card-2", "card-3", 'card-4'],
+            {'list_name': 'Project starting to do items', 'boardId': 4, 'card_order': [ "card-1", "card-2", "card-3", 'card-4'],
              'due_date': None, 'updated': datetime.datetime.now(), "created": datetime.datetime.now(), },
-            {'list_name': 'In progress', 'boardId': 2, 'card_order': ["card-1"],
+            {'list_name': 'In progress', 'boardId': 4, 'card_order': ["card-1"],
              'due_date': None, 'updated': datetime.datetime.now(), "created": datetime.datetime.now(), },
-            {'list_name': 'Completed', 'boardId': 2, 'card_order': [ ],
+            {'list_name': 'Completed', 'boardId': 4, 'card_order': [ ],
              'due_date': None, 'updated': datetime.datetime.now(), "created": datetime.datetime.now(), }
         ]
     )
