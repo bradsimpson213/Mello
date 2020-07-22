@@ -13,6 +13,7 @@ import NavBar3 from './navbars/NavBar3';
 import List from './List';
 import appContext from '../Context';
 import { baseUrl } from "../config";
+import { buildBoardOrg } from "../utils";
 import styles from './ListsPage.module.css';
 
 const ListsPage = () => {
@@ -28,7 +29,9 @@ const ListsPage = () => {
             const res = await fetch(`${baseUrl}/boards/details/4`);
         const data = await res.json();
         const { board, cards, lists } = data;
-        console.log(cards);
+        const loadBoardOrg = buildBoardOrg(board, cards, lists);
+        setBoardOrg(loadBoardOrg);
+        console.log(loadBoardOrg);
         })();
     }, []);
     

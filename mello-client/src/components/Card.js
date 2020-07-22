@@ -20,7 +20,7 @@ import styles from './Card.module.css';
 const Card = (props) => {
 
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const [cardTitle, setCardTitle] = useState(props.card.content)
+    const [cardTitle, setCardTitle] = useState(props.card.details)
     
     return (
       <Draggable draggableId={props.card.id} index={props.index}>
@@ -32,7 +32,7 @@ const Card = (props) => {
             className={styles.cardHolder}
             onClick={onOpen}
           >
-            <h4>{props.card.content}</h4>
+            <h4>{cardTitle}</h4>
             {/* <Button onClick={onOpen}>{props.card.content}</Button> */}
 
             <Modal

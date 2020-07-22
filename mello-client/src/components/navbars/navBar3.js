@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useContext } from 'react';
 import {
   Drawer,
   DrawerBody,
@@ -14,6 +14,7 @@ import {
   Input,
   useDisclosure
 } from "@chakra-ui/core";
+import appContext from "../../Context";
 import styles from './NavBar3.module.css';
 
 
@@ -21,9 +22,11 @@ const NavBar3 = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const btnRef = useRef();
 
+     const { boardOrg, setBoardOrg } = useContext(appContext);
+
     return (
       <div className={styles.navBar3}>
-        <Editable className={styles.boardName} defaultValue="Board Name...">
+        <Editable className={styles.boardName} defaultValue="Board Name..." value={boardOrg.board.boardName}>
             <EditablePreview />
             <EditableInput />
         </Editable>

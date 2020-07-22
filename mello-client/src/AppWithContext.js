@@ -8,12 +8,13 @@ const AppWithContext = () => {
   const [user, setUser] = useState("");
   const [id, setId] = useState("");
   const [boardOrg, setBoardOrg] = useState({
+    board: { "boardName": "Board Name Here", "board_image": "url"},
     cards: {
-      "card-1": { id: "card-1", content: "Create new project" },
-      "card-2": { id: "card-2", content: "Plan database structure" },
-      "card-3": { id: "card-3", content: "Document project in readme file" },
-      "card-4": { id: "card-4", content: "Code.  Like a whole lot." },
-      "card-5": { id: "card-5", content: "Code some more." },
+      "card-1": { id: "card-1", details: "Create new project" },
+      "card-2": { id: "card-2", details: "Plan database structure" },
+      "card-3": { id: "card-3", details: "Document project in readme file" },
+      "card-4": { id: "card-4", details: "Code.  Like a whole lot." },
+      "card-5": { id: "card-5", details: "Code some more." },
     },
     lists: {
       "list-1": {

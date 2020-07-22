@@ -16,18 +16,33 @@ def get_baord_details(boardId):
     board = Board.query.get(boardId)
 
     if board:
-        cards = []
+        cards_array = []
         blists = List.query.filter(List.boardId == board.id).all()
-
+# GET ALL CARDS FROM THE LISTS ON SELECTED BOARD AND FORMAT LISTS FOR CLIENT
+        lists = {}
         for blist in blists:
             list_cards = Card.query.filter(Card.listId == blist.id).all()
-            dict_cards = [list_card.to_dict() for list_card in list_cards]
-            cards.append(dict_cards)
-            print(cards)
-            
-        dict_lists = [list1.to_dict() for list1 in blists]
+            cards_dict = [card.to_dict() for card in list_cards]
+            cards_array.append(cards_dict)
+            blist = blist.to_dict()
+            list_index = blist['id']
+            list_title = blist['list_name']
+            list_cards = blist['card_order']
+            lists[f'list-{list_index}'] = {
+                'id': f'list-{list_index}', 'title': list_title, 'cardIds': list_cards
+            }
+
+# FORMAT CARD DATA FOR CLIENT SIDE
+        cards = {}
+        for card in cards_array:
+            for index in range(0, len(card)):
+                card_index = card[index]['id'] 
+                card_content = card[index]['details']
+                cards[f'card-{card_index}'] = {
+                    'id': f'card-{card_index}', 'details': card_content 
+                }
        
-        return { 'board': board.to_dict(), 'lists': dict_lists, 'cards': cards }   
+        return { 'board': board.to_dict(), 'lists': lists, 'cards': cards }   
     else:
         return {"error": "No Boards found for provided Board Id"}, 401
 
