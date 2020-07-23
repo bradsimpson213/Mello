@@ -1,11 +1,11 @@
 .listHolder {
-    width: 350px;
-    min-width: 350px;
+    width: 300px;
+    min-width: 300px;
     display: flex;
     flex-direction: column;
     background-color: lightgray;
     box-sizing: border-box;
-    border: solid 1px black;
+    border: solid 1px darkgray;
     border-radius: 7px;
     padding: 15px;
     margin: 10px;
@@ -35,6 +35,6 @@
 
 .textArea {
     resize: none;
-    max-width: 280px;
+    max-width: 225px;
     border: solid 1px darkgray;
 }

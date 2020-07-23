@@ -71,6 +71,24 @@ const ListsPage = () => {
         };
     };
 
+    const saveBoard = async(newBoard) => {
+        const { board, lists, listOrder} = newBoard
+        const res = await fetch(`${baseUrl}/boards/save`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: token,
+            },
+            body: JSON.stringify({ board, listOrder, lists }),
+          }
+        );
+        const data = res.json();
+        if (data.error) {
+          alert("Error saving new List to Database.");
+        };
+    };
+    
 
     const hideCollapse = () => {
         resetListText();
@@ -109,6 +127,7 @@ const ListsPage = () => {
                 listOrder: newListOrder,
             };
             setBoardOrg(newContext);
+            saveBoard(newContext);
             return;
         };
 
@@ -134,6 +153,7 @@ const ListsPage = () => {
                 },
             };
             setBoardOrg(newContext);
+            saveBoard(newContext);
             return;
         };
 
@@ -160,6 +180,7 @@ const ListsPage = () => {
             },
         };
         setBoardOrg(newContext);
+        saveBoard(newContext);
     };
 
     return (

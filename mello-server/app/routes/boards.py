@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from ..models import db
 from ..models.boards import Board
 from ..models.lists import List
@@ -44,6 +44,34 @@ def get_baord_details(boardId):
     else:
         return {"error": "No Boards found for provided Board Id"}, 401
 
+
+# SAVE BOARD ORDER TO DB
+@bp.route("/save", methods=["POST"])
+def create_new_List():
+    data = request.json
+   
+    try:
+        board = Board.query.get(data['board']['id'])
+        print(board)
+        board.list_order = ','.join(data['listOrder'])
+
+        lists = data['lists']
+
+        for key in lists.keys():
+            if len(lists[key]['cardIds']) > 0:
+                list_db = List.query.get(int(lists[key]["id"][5]))
+                list_db.card_order = ','.join(lists[key]['cardIds'])
+            else:
+                list_db = List.query.get(int(lists[key]["id"][5]))
+                list_db.card_order = None
+            
+        db.session.commit()
+        print("Board order saved")
+        return "Board layout has been saved!"
+
+    except AssertionError as message:
+        print(str(message))
+        return jsonify({"error": str(message)}), 400
 
 
 # GET ALL BOARDS FOR A USER BY USER ID
