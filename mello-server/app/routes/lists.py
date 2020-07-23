@@ -2,7 +2,6 @@ from flask import Blueprint, request, jsonify
 from ..models import db
 from ..models.boards import Board
 from ..models.lists import List
-from ..models.cards import Card
 from ..config import Config
 import datetime
 
@@ -23,8 +22,11 @@ def create_new_List():
                     created=datetime.datetime.now())
         db.session.add(new_list)
 
-        new_list_id = "," + data['newList']['id']
-        board.list_order += new_list_id
+        if board.list_order:
+            board.list_order += ("," + data['newList']['id'])
+        else:
+            board.list_order = data['newList']['id']
+
         db.session.commit()
         print(board.to_dict())
         

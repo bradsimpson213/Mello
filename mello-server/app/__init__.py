@@ -7,6 +7,7 @@ from .routes import users
 from .routes import quotes
 from .routes import boards
 from .routes import lists
+from .routes import cards
 
 app = Flask(__name__)
 CORS(app)
@@ -19,6 +20,7 @@ app.register_blueprint(users.bp)
 app.register_blueprint(quotes.bp)
 app.register_blueprint(boards.bp)
 app.register_blueprint(lists.bp)
+app.register_blueprint(cards.bp)
 
 # @app.route("/")
 # def home_server():

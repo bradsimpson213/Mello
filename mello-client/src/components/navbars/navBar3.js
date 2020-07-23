@@ -26,7 +26,10 @@ const NavBar3 = () => {
 
     return (
       <div className={styles.navBar3}>
-        <Editable className={styles.boardName} defaultValue="Board Name..." value={boardOrg.board.boardName}>
+        <Editable className={styles.boardName} 
+          defaultValue="Board Name..." 
+          value={boardOrg.board.boardName}
+          >
             <EditablePreview />
             <EditableInput />
         </Editable>

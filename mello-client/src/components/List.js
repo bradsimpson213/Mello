@@ -4,6 +4,7 @@ import useInputState from './hooks/useInputState'
 import { Button, CloseButton, Collapse, Editable,
      EditableInput, EditablePreview, Textarea } from '@chakra-ui/core';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
+import { baseUrl } from "../config";
 import styles from './List.module.css';
 import Card from './Card';
 import appContext from '../Context';
@@ -14,7 +15,7 @@ const List = (props) => {
     const [cardText, updateCardText, resetText] = useInputState();
     const [hidden, toggleHidden] = useToggle(false);
 
-    const { boardOrg, setBoardOrg } = useContext(appContext);
+    const { boardOrg, setBoardOrg, token } = useContext(appContext);
 
     const addCard = (e) => {
         e.preventDefault();
@@ -22,7 +23,7 @@ const List = (props) => {
         const newCardId = `card-${Object.keys(boardOrg.cards).length + 1}`;
         const newCard = {
             id: newCardId,
-            content: cardText,
+            title: cardText,
         };
 
         const newBoardOrg = {
@@ -34,11 +35,28 @@ const List = (props) => {
    
         };
         newBoardOrg.lists[listId].cardIds.push(newCardId);
-
-        console.log(newBoardOrg);
         setBoardOrg(newBoardOrg);
+        saveCard(newCard, listId)
         hideCollapse();
     };
+
+    const saveCard = async (newCard, listId) => {
+    const res = await fetch(`${baseUrl}/cards/create`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+        body: JSON.stringify({ newCard: newCard, listId: listId }),
+      }
+    );
+    const data = res.json();
+    if (data.error) {
+      alert("Error saving new Card to Database.");
+    };
+  };
+
 
     const hideCollapse = () => {
         resetText();

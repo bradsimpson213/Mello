@@ -35,9 +35,9 @@ def get_baord_details(boardId):
         for card in cards_array:
             for index in range(0, len(card)):
                 card_index = card[index]['id'] 
-                card_content = card[index]['details']
+                card_content = card[index]['title']
                 cards[f'card-{card_index}'] = {
-                    'id': f'card-{card_index}', 'details': card_content 
+                    'id': f'card-{card_index}', 'title': card_content 
                 }
         return { 'board': board.to_dict(), 'lists': lists, 'cards': cards }   
 
