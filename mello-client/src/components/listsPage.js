@@ -21,7 +21,7 @@ const ListsPage = () => {
     const [listText, updateListText, resetListText] = useInputState();
     const [hidden, toggleHidden] = useToggle(false);
 
-    const { boardOrg, setBoardOrg } = useContext(appContext);
+    const { boardOrg, setBoardOrg, token } = useContext(appContext);
 
      //THIS USE EFFECT GETS BOARDS LISTS/CARDS (ONLY ONCE ON MOUNT)
     useEffect(() => {
@@ -30,8 +30,9 @@ const ListsPage = () => {
         const data = await res.json();
         const { board, cards, lists } = data;
         const loadBoardOrg = buildBoardOrg(board, cards, lists);
-        setBoardOrg(loadBoardOrg);
         console.log(loadBoardOrg);
+        setBoardOrg(loadBoardOrg);
+       
         })();
     }, []);
     
@@ -39,12 +40,7 @@ const ListsPage = () => {
     const addList = (e) => {
         e.preventDefault();
         const newListId = `list-${boardOrg.listOrder.length + 1}`;
-         const newList = {
-           id: newListId,
-           title: listText,
-           cardIds: [],
-         };
-        
+        const newList = { id: newListId, title: listText, cardIds: [] };
         const newBoardOrg = {
           ...boardOrg,
           lists: {
@@ -54,7 +50,25 @@ const ListsPage = () => {
         };
         newBoardOrg.listOrder.push(newListId);
         setBoardOrg(newBoardOrg);
+        saveList(newList, newBoardOrg.board);
         hideCollapse();
+    };
+
+    const saveList = async (newList, boardInfo) => {
+        const res = await fetch(`${baseUrl}/lists/create`,
+            {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: token,
+                },
+            body: JSON.stringify({ newList: newList, board: boardInfo }),
+            }
+        );
+        const data = res.json();
+        if (data.error) {
+            alert("Error saving new List to Database.");
+        };
     };
 
 
@@ -73,7 +87,7 @@ const ListsPage = () => {
         //add drag item tilt here will need to add onDrafStert={onDragStart} to component
     };
 
-     const onDragEnd = (result) => {
+    const onDragEnd = (result) => {
         //cancel drag item tilt here
         const { destination, source, draggableId, type } = result;
         //Chekcs to make sure something was actually moved to a new spot
@@ -202,6 +216,6 @@ const ListsPage = () => {
         </DragDropContext>
       </>
     );
-}
+};
 
 export default ListsPage;

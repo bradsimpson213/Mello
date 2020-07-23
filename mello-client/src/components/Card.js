@@ -47,6 +47,7 @@ const Card = (props) => {
                   <Editable
                     defaultValue="Card title..."
                     value={cardTitle}
+                    onChange={setCardTitle}
                   >
                     <EditablePreview />
                     <EditableInput />

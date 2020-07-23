@@ -1,6 +1,5 @@
 from flask import Blueprint, request
 from ..models import db
-from sqlalchemy.orm import joinedload
 from ..models.boards import Board
 from ..models.lists import List
 from ..models.cards import Card
@@ -31,7 +30,6 @@ def get_baord_details(boardId):
             lists[f'list-{list_index}'] = {
                 'id': f'list-{list_index}', 'title': list_title, 'cardIds': list_cards
             }
-
 # FORMAT CARD DATA FOR CLIENT SIDE
         cards = {}
         for card in cards_array:
@@ -41,14 +39,14 @@ def get_baord_details(boardId):
                 cards[f'card-{card_index}'] = {
                     'id': f'card-{card_index}', 'details': card_content 
                 }
-       
         return { 'board': board.to_dict(), 'lists': lists, 'cards': cards }   
+
     else:
         return {"error": "No Boards found for provided Board Id"}, 401
 
 
 
-# GET ALL BOARD FOR A USER BY USER ID
+# GET ALL BOARDS FOR A USER BY USER ID
 @bp.route("/user/<int:userId>")
 def get_user_boards(userId):
     boards = Board.query.filter(Board.userId == userId).all()

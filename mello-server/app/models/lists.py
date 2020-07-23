@@ -1,11 +1,12 @@
 from ..models import db
 
+
 class List(db.Model):
     __tablename__ = "lists"
     id = db.Column(db.Integer, primary_key=True)
     list_name = db.Column(db.String(50), nullable=False)
     boardId = db.Column(db.Integer, db.ForeignKey("boards.id"), nullable=False)
-    card_order = db.Column(db.ARRAY(db.Integer), nullable=False)
+    card_order = db.Column(db.String(500), nullable=True)
     due_date = db.Column(db.DateTime)
     updated = db.Column(db.DateTime, nullable=False)
     created = db.Column(db.DateTime,nullable=False)
@@ -15,5 +16,5 @@ class List(db.Model):
 
     def to_dict(self):
         return {"id": self.id, "list_name": self.list_name, "boardId": self.boardId,
-                "card_order": self.card_order, "due_date": self.due_date, "updated": self.updated,
+                "card_order": self.card_order.split(',') if self.card_order else [], "due_date": self.due_date, "updated": self.updated,
                 "created": self.created }

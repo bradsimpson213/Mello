@@ -22,7 +22,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('list_name', sa.String(length=50), nullable=False),
     sa.Column('boardId', sa.Integer(), nullable=False),
-    sa.Column('card_order', sa.ARRAY(sa.String()), nullable=False),
+    sa.Column('card_order', sa.String(length=500), nullable=True),
     sa.Column('due_date', sa.DateTime(), nullable=True),
     sa.Column('updated', sa.DateTime(), nullable=False),
     sa.Column('created', sa.DateTime(), nullable=False),
@@ -32,11 +32,11 @@ def upgrade():
     # ### end Alembic commands ###
     op.bulk_insert(lists_table,
         [
-            {'list_name': 'Project starting to do items', 'boardId': 4, 'card_order': [ "card-1", "card-2", "card-3", 'card-4'],
+            {'list_name': 'Project starting to do items', 'boardId': 4, 'card_order': "card-1,card-2,card-3,card-4",
              'due_date': None, 'updated': datetime.datetime.now(), "created": datetime.datetime.now(), },
-            {'list_name': 'In progress', 'boardId': 4, 'card_order': ["card-1"],
+            {'list_name': 'In progress', 'boardId': 4, 'card_order': "card-5",
              'due_date': None, 'updated': datetime.datetime.now(), "created": datetime.datetime.now(), },
-            {'list_name': 'Completed', 'boardId': 4, 'card_order': [ ],
+            {'list_name': 'Completed', 'boardId': 4, 'card_order': None,
              'due_date': None, 'updated': datetime.datetime.now(), "created": datetime.datetime.now(), }
         ]
     )

@@ -98,7 +98,7 @@ const AppWithContext = () => {
   //   listOrder:['list-1'],
   // };
 
-  const context = { login, user, id, boardOrg, setBoardOrg };
+  const context = { login, user, id, boardOrg, setBoardOrg, token };
   return (
     <AppContext.Provider value={context}>
       <App />

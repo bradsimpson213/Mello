@@ -6,6 +6,7 @@ from .models import db
 from .routes import users
 from .routes import quotes
 from .routes import boards
+from .routes import lists
 
 app = Flask(__name__)
 CORS(app)
@@ -17,6 +18,7 @@ migrate = Migrate(app, db)
 app.register_blueprint(users.bp)
 app.register_blueprint(quotes.bp)
 app.register_blueprint(boards.bp)
+app.register_blueprint(lists.bp)
 
 # @app.route("/")
 # def home_server():

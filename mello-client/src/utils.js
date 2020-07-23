@@ -4,7 +4,7 @@ import { FaAssistiveListeningSystems } from "react-icons/fa";
 export const buildBoardOrg = (board, cards, lists) => {
 
     const loadBoardOrg = {
-      board: { 'boardName': board.board_name, 'boardImage': board.board_image },
+      board: { 'id': board.id, 'boardName': board.board_name, 'boardImage': board.board_image },
       cards: cards,
       lists: lists,
       listOrder: board.list_order,
