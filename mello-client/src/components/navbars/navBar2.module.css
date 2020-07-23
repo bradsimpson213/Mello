@@ -17,9 +17,10 @@
     grid-column: 4 / 5;
     color: white;
     background: linear-gradient(135deg, #0079bf, #5067c5);
-    height: 35px;
+    height: 175px;
     align-self: center;
     justify-self: right;
+    margin-top: 1px;
 }
 
 .search {
@@ -27,6 +28,7 @@
     align-self: center;
     justify-self: left;
     background-color: hsla(0,0%,100%,.3);
+    margin-top: 1px;
 }
 
 .logoWhite {

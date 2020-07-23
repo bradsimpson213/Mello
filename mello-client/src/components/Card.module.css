@@ -6,3 +6,8 @@
     padding-left: 15px;
     margin: 2px;
 }
+
+.modalContainer {
+    min-height: 500px;
+    min-width: 400px;
+}

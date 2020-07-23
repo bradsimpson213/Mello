@@ -43,7 +43,7 @@ const Card = (props) => {
               onClose={onClose}
             >
               <ModalOverlay />
-              <ModalContent>
+              <ModalContent className={styles.modalContainer} >
                 <ModalHeader>
                   <Editable
                     defaultValue="Card title..."

@@ -36,7 +36,7 @@
     justify-content: space-evenly;
     align-items: center;
     border: solid 1px lightgray;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, .2);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, .4);
     border-radius: 10px;
     height: 500px;
     width: 400px;

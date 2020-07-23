@@ -14,6 +14,7 @@ const List = (props) => {
     const [show, toggleShow] = useToggle(false);
     const [cardText, updateCardText, resetText] = useInputState();
     const [hidden, toggleHidden] = useToggle(false);
+    const [listText, setListText] = useInputState(props.list.title);
 
     const { boardOrg, setBoardOrg, token } = useContext(appContext);
 
@@ -82,7 +83,8 @@ const List = (props) => {
                 <Editable
                 className={styles.listName}
                 defaultValue="List Name..."
-                value={props.list.title}
+                value={listText}
+                onChange={setListText}
                 >
                 <EditablePreview />
                 <EditableInput />

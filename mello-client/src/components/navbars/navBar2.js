@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-// import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { FiHome } from 'react-icons/fi';
 import { FaTrello } from 'react-icons/fa';
 import styles from './NavBar2.module.css';
@@ -16,6 +16,7 @@ const NavBar2 = () => {
       <div className={styles.navBar2}>
         <FiHome
           className={styles.homeIcon}
+          onClick={<Redirect to="/boards" />}
         />
         <Menu>
           <MenuButton
@@ -27,6 +28,7 @@ const NavBar2 = () => {
           </MenuButton>
           <MenuList>
             <MenuItem>Personal Boards</MenuItem>
+
             <MenuItem>Team Boards</MenuItem>
           </MenuList>
         </Menu>

@@ -13,7 +13,10 @@
     text-align: left;
     font-weight: bold;
     font-size: 26px;
-
+    text-shadow: -2px 2px 0 #000,
+				  2px 2px 0 #000,
+				 2px -2px 0 #000,
+				-2px -2px 0 #000;
 }
 
 .drawerButton {

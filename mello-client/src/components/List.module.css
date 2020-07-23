@@ -7,6 +7,7 @@
     box-sizing: border-box;
     border: solid 1px darkgray;
     border-radius: 7px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, .4);
     padding: 15px;
     margin: 10px;
 

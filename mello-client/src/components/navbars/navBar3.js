@@ -55,13 +55,12 @@ const NavBar3 = () => {
               <DrawerBody>
                 <h4> Preferences </h4>
                 <h4> Change Background </h4>
-                <Input placeholder="Type here..." />
               </DrawerBody>
               <DrawerFooter>
-                <Button variant="outline" mr={3} onClick={onClose}>
-                  Cancel
-                </Button>
-                <Button color="blue">Save</Button>
+                <div>
+                  <p>This website was designed by Brad Simpson</p>
+                  <a href="https://brad-simpson-website.herokuapp.com/">Click Here to view my Personal Website</a>
+                </div>
               </DrawerFooter>
             </DrawerContent>
           </Drawer>

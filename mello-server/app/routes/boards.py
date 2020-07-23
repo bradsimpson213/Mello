@@ -77,6 +77,7 @@ def create_new_List():
 # GET ALL BOARDS FOR A USER BY USER ID
 @bp.route("/user/<int:userId>")
 def get_user_boards(userId):
+    
     boards = Board.query.filter(Board.userId == userId).all()
 
     if boards:

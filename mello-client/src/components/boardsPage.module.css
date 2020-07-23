@@ -1,7 +1,118 @@
 .mainBox {
     background: whitesmoke;
-    /* display: grid; */
+    box-sizing: border-box;
     font-family: Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
     width: 100%;
     height: 100%;
+}
+
+.titleBox {
+    width: 100%;
+    height: 95px;
+    align-items: center;
+    padding:10px;
+    font-size: 30px;
+    display: flex;
+    flex-flow: row;
+}
+
+.melloIcon {
+    height: 35px;
+    margin-left: 15px;
+    margin-right: 5px;
+}
+
+.boardsBox {
+    width: 100%;
+    display: grid;
+    margin: 0;
+    grid-template-columns: 1.7fr 7fr;
+    grid-template-rows: auto;
+    grid-template-areas: 
+        "personal pboards"
+        "teams tboards";
+}
+
+.personalTitle {
+    grid-area: "personal";
+    text-align: right;
+    margin-right: 7px;
+    margin-left: 7px;
+    font-size: 24px;
+
+}
+.personalHolder {
+    grid-area: "pbaords";
+    display: flex;
+    flex-flow: row;   
+}
+
+.board {
+    height: 150px;
+    width: 300px;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    background-size: cover;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, .4);
+    margin: 15px;
+}
+
+.boardTitle {
+    color: whitesmoke;
+    font-size: x-large;
+    font-weight: bold;
+    padding: 15px;
+    text-shadow: -2px 2px 0 #000,
+				  2px 2px 0 #000,
+				 2px -2px 0 #000,
+				-2px -2px 0 #000;
+
+}
+
+.boardNew {
+    height: 150px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    background: rgba(192, 192, 192, .7);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, .4);
+    margin: 15px;
+}
+
+.titleNew {
+    text-align: center;
+    font-size: 26px;
+    margin: 0;
+}
+
+.teamTitle {
+    grid-area: "teams";
+    text-align: right;
+    margin-right: 7px;
+    margin-left: 7px;
+    font-size: 24px;
+}
+
+.teamHolder {
+    grid-area: "tbaords";
+    display: flex;
+    flex-flow: row;   
+}
+
+.iconHelper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-self: end;
+}
+
+.comingSoon {
+    text-align: center;
+    font-size: larger;
 }
