@@ -11,3 +11,8 @@
     min-height: 500px;
     min-width: 400px;
 }
+
+.cardHolder:hover {
+    transform: rotate(25);
+    /* rotate: 15; */
+}

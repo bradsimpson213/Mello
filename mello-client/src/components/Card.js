@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
+import NaturalDragAnimation from "natural-drag-animation-rbdnd";
 import {
   Button,
   Editable,
@@ -25,50 +26,56 @@ const Card = (props) => {
     
     return (
       <Draggable draggableId={props.card.id} index={props.index}>
-        {(provided) => (
-          <div
-            ref={provided.innerRef}
-            {...provided.draggableProps}
-            {...provided.dragHandleProps}
-            className={styles.cardHolder}
-            onClick={onOpen}
+        {(provided, snapshot) => (
+          <NaturalDragAnimation
+            style={provided.draggableProps.style}
+            snapshot={snapshot}
           >
-            <h4>{cardTitle}</h4>
-            {/* <Button onClick={onOpen}>{props.card.content}</Button> */}
-
-            <Modal
-              blockScrollOnMount={false}
-              size="xl"
-              isOpen={isOpen}
-              onClose={onClose}
+          {style => (
+            <div
+              ref={provided.innerRef}
+              {...provided.draggableProps}
+              {...provided.dragHandleProps}
+              style={style}
+              className={styles.cardHolder}
+              onClick={onOpen}
             >
-              <ModalOverlay />
-              <ModalContent className={styles.modalContainer} >
-                <ModalHeader>
-                  <Editable
-                    defaultValue="Card title..."
-                    value={cardTitle}
-                    onChange={setCardTitle}
-                  >
-                    <EditablePreview />
-                    <EditableInput />
-                  </Editable>
-                </ModalHeader>
-                <ModalCloseButton />
-                <ModalBody>
-                  <Text fontWeight="bold" mb="1rem">
-                    You can scroll the content behind the modal
-                  </Text>
-                </ModalBody>
-                <ModalFooter>
-                  <Button variantColor="blue" mr={3} onClick={onClose}>
-                    Close
-                  </Button>
-                  <Button variant="ghost">Secondary Action</Button>
-                </ModalFooter>
-              </ModalContent>
-            </Modal>
-          </div>
+              <h4>{cardTitle}</h4>
+              <Modal
+                blockScrollOnMount={false}
+                size="xl"
+                isOpen={isOpen}
+                onClose={onClose}
+              >
+                <ModalOverlay />
+                <ModalContent className={styles.modalContainer}>
+                  <ModalHeader>
+                    <Editable
+                      defaultValue="Card title..."
+                      value={cardTitle}
+                      onChange={setCardTitle}
+                    >
+                      <EditablePreview />
+                      <EditableInput />
+                    </Editable>
+                  </ModalHeader>
+                  <ModalCloseButton />
+                  <ModalBody>
+                    <Text fontWeight="bold" mb="1rem">
+                      You can scroll the content behind the modal
+                    </Text>
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button variantColor="blue" mr={3} onClick={onClose}>
+                      Close
+                    </Button>
+                    <Button variant="ghost">Secondary Action</Button>
+                  </ModalFooter>
+                </ModalContent>
+              </Modal>
+            </div>
+          )}
+          </NaturalDragAnimation>
         )}
       </Draggable>
     );
