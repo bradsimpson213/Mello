@@ -26,12 +26,13 @@ const NavBar3 = () => {
 
     return (
       <div className={styles.navBar3}>
-        <Editable className={styles.boardName} 
-          defaultValue="Board Name..." 
+        <Editable
+          className={styles.boardName}
+          defaultValue="Board Name..."
           value={boardOrg.board.boardName}
-          >
-            <EditablePreview />
-            <EditableInput />
+        >
+          <EditablePreview />
+          <EditableInput />
         </Editable>
         <div className={styles.drawerButton}>
           <Button
@@ -54,12 +55,15 @@ const NavBar3 = () => {
               <DrawerHeader>Menu</DrawerHeader>
               <DrawerBody>
                 <h4> Preferences </h4>
+                <h4> Music Controls</h4>
                 <h4> Change Background </h4>
               </DrawerBody>
               <DrawerFooter>
                 <div>
                   <p>This website was designed by Brad Simpson</p>
-                  <a href="https://brad-simpson-website.herokuapp.com/">Click Here to view my Personal Website</a>
+                  <a href="https://brad-simpson-website.herokuapp.com/">
+                    Click Here to view my Personal Website
+                  </a>
                 </div>
               </DrawerFooter>
             </DrawerContent>

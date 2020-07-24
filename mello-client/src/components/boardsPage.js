@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
+import { Link } from "react-router-dom";
 import appContext from "../Context";
 import NavBar2 from './navbars/NavBar2';
 import { GrAddCircle } from 'react-icons/gr';
@@ -6,7 +7,7 @@ import { FaUserAlt, FaUsers } from 'react-icons/fa';
 import { baseUrl } from "../config";
 import styles from './BoardsPage.module.css';
 
-const Boards = (props) => {
+const Boards = () => {
     const [boards, setBoards] = useState(null);
     const [teamBoards, setTeamBoards] = useState(null);
     const { user, token } = useContext(appContext);
@@ -33,6 +34,7 @@ const Boards = (props) => {
       setBoards(data.boards);
     };
 
+
     return (
       <>
         <NavBar2 />
@@ -51,9 +53,9 @@ const Boards = (props) => {
             </div>
             <div className={styles.personalHolder}>
               {boards ? boards.map((board) => (
-                <div className={styles.board} key={board.id} style={{backgroundImage: `url(${board.board_image})`}}>
+                <Link to="/lists" className={styles.board} key={board.id} style={{backgroundImage: `url(${board.board_image})`}}>
                   <p className={styles.boardTitle}>{board.board_name}</p>
-                </div> 
+                </Link> 
               ))
               : ""}
                 <div className={styles.boardNew}>

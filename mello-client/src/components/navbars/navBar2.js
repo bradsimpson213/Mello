@@ -18,6 +18,16 @@ const NavBar2 = () => {
           className={styles.homeIcon}
           onClick={<Redirect to="/boards" />}
         />
+        <audio autoplay="true" loop="true">
+          <source
+            src="https://mello-music.s3.amazonaws.com/2020-06-18_-_Serenity_-_www.FesliyanStudios.com_David_Renda.mp3"
+            type="audio/mpeg"
+          />
+          <source
+            src="https://mello-music.s3.amazonaws.com/2019-04-06_-_Deep_Meditation_-_David_Fesliyan.mp3"
+            type="audio/mpeg"
+          />
+        </audio>
         <Menu>
           <MenuButton
             className={styles.boardDropDown}
@@ -43,11 +53,7 @@ const NavBar2 = () => {
           src="https://mello-landing-images.s3.amazonaws.com/white-logo.png"
           alt="Mello Logo"
         />
-        <Avatar
-          className={styles.avatar}
-          name={user.name}
-          src=""
-        />
+        <Avatar className={styles.avatar} name={user.name} src="" />
       </div>
     );
 };

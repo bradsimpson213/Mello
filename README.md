@@ -5,24 +5,25 @@ A Zen inspired Kanban board allows you to relax and mindfully evalute your progr
 ## MVP
 - Boards
 - Lists & Cards
-- Sharing Boards (Teams)
-- Comments and Due Dates
+- Drag and Drop Functionality 
+- Board Settings (Background Colors/Images)
+- Checklists and Due Dates
 
 ## BONUS STRETCH GOALS
-- Board Settings (Background Colors/Images)
-- Hotkeys (Think this is part of React Beautiful DND)
-- Checklists
-- Zen music played in background while logged in
 - Random zen quote of the day (COMPLETED!)
+- Cards & Lists tilt when moved (COMPLETED!)
+- Zen music played in background while logged in (COMPLETED!) 
+- Sharing Boards (Teams)
+- Hotkeys (Think this is part of React Beautiful DND)
 - Timed reminders to take breaks and breathe
 
 ## TECHNOLOGY USED
 ### Client Side
 - React Client 
 - React Beautiful DND (https://github.com/atlassian/react-beautiful-dnd)
+- React Natural Drag Animation for RBDND (https://github.com/rokborf/natural-drag-animation-rbdnd)
 - Chakra Component Library (https://chakra-ui.com/)
-- Google Authorization (maybe)
-- 
+- Google Authorization (eventually)
 
 ### Server Side
 - Flask / Python Server
