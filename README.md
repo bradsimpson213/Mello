@@ -3,9 +3,9 @@ Why does going through your to do lists have to be so painful?  With Mello it is
 A Zen inspired Kanban board allows you to relax and mindfully evalute your progress, and thoughtfully plan your future!  
 
 ## MVP
-- Boards
-- Lists & Cards
-- Drag and Drop Functionality 
+- Boards (mostly complete)
+- Lists & Cards (mostly complete)
+- Drag and Drop Functionality (COMPLETED!)
 - Board Settings (Background Colors/Images)
 - Checklists and Due Dates
 

@@ -53,7 +53,7 @@ const Boards = () => {
             </div>
             <div className={styles.personalHolder}>
               {boards ? boards.map((board) => (
-                <Link to="/lists" className={styles.board} key={board.id} style={{backgroundImage: `url(${board.board_image})`}}>
+                <Link to={`/lists/${board.id}`} className={styles.board} key={board.id} style={{backgroundImage: `url(${board.board_image})`}}>
                   <p className={styles.boardTitle}>{board.board_name}</p>
                 </Link> 
               ))

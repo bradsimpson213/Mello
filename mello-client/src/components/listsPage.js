@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import {
   Button,
   CloseButton,
@@ -20,13 +21,15 @@ const ListsPage = () => {
     const [show, toggleShow] = useToggle(false);
     const [listText, updateListText, resetListText] = useInputState();
     const [hidden, toggleHidden] = useToggle(false);
-
+    
+    const { boardId } = useParams()
     const { boardOrg, setBoardOrg, token } = useContext(appContext);
-
+    console.log(boardId);
+   
      //THIS USE EFFECT GETS BOARDS LISTS/CARDS (ONLY ONCE ON MOUNT)
     useEffect(() => {
         (async () => {
-            const res = await fetch(`${baseUrl}/boards/details/4`);
+            const res = await fetch(`${baseUrl}/boards/details/${boardId}`);
         const data = await res.json();
         const { board, cards, lists } = data;
         const loadBoardOrg = buildBoardOrg(board, cards, lists);
@@ -190,20 +193,30 @@ const ListsPage = () => {
         <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId="all-lists" direction="horizontal" type="list">
             {(provided) => (
-              <div className={styles.listsContainer} 
+              <div
+                className={styles.listsContainer}
                 {...provided.droppableProps}
-                ref={provided.innerRef}>
-                    {boardOrg.listOrder.map((listId, index) => {
-                        const list = boardOrg.lists[listId];
-                        const cards = list.cardIds.map(
-                        (cardId) => boardOrg.cards[cardId]
-                        );
-                        return <List key={list.id} list={list} cards={cards} index={index} />;
-                        })}
-                    {provided.placeholder}
-                <div className={ styles.newList }>
+                ref={provided.innerRef}
+                style={{ backgroundImage: `url(${boardOrg.board.boardImage})` }}
+              >
+                {boardOrg.listOrder.map((listId, index) => {
+                  const list = boardOrg.lists[listId];
+                  const cards = list.cardIds.map(
+                    (cardId) => boardOrg.cards[cardId]
+                  );
+                  return (
+                    <List
+                      key={list.id}
+                      list={list}
+                      cards={cards}
+                      index={index}
+                    />
+                  );
+                })}
+                {provided.placeholder}
+                <div className={styles.newList}>
                   <Button
-                    className={ styles.newListButton }
+                    className={styles.newListButton}
                     leftIcon="add"
                     variantColor="darkgray"
                     variant="outline"
@@ -213,19 +226,21 @@ const ListsPage = () => {
                     Add another list
                   </Button>
                   <Collapse
-                    className={ styles.collapseList }
+                    className={styles.collapseList}
                     mt={4}
                     isOpen={show}
                   >
-                    <form onSubmit={ addList }>
+                    <form onSubmit={addList}>
                       <Input
-                        className={ styles.newListInput }
-                        value={ listText }
+                        className={styles.newListInput}
+                        value={listText}
                         onChange={updateListText}
                         placeholder="Enter list title..."
                       />
                       <div>
-                        <Button variantColor="green" type="submit" >Add List</Button>
+                        <Button variantColor="green" type="submit">
+                          Add List
+                        </Button>
                         <CloseButton onClick={hideCollapse} />
                       </div>
                     </form>

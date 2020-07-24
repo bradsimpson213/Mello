@@ -37,7 +37,7 @@ def upgrade():
 
     op.bulk_insert(boards_table,
         [
-            {'userId': 1, 'board_name': 'Coding Project', 'board_image': 'https://mello-zen-images.s3.amazonaws.com/zen-1.jpg',
+            {'userId': 1, 'board_name': 'Coding Project', 'board_image': 'https://mello-zen-images.s3.amazonaws.com/zen-4.jpg',
              'public': False, 'team': False, 'teamId': None, 'list_order': None, 'updated': datetime.datetime.now(),
              'created': datetime.datetime.now()},
             {'userId': 1, 'board_name': 'Home Remodel', 'board_image': 'https://mello-zen-images.s3.amazonaws.com/zen-2.jpg',
@@ -46,8 +46,8 @@ def upgrade():
             {'userId': 1, 'board_name': 'Work Project', 'board_image': 'https://mello-zen-images.s3.amazonaws.com/zen-3.jpg',
              'public': False, 'team': True, 'teamId': 1, 'list_order': None, 'updated': datetime.datetime.now(),
              'created': datetime.datetime.now()},
-            {'userId': 2, 'board_name': 'Coding Project', 'board_image': 'https://mello-zen-images.s3.amazonaws.com/zen-1.jpg',
-             'public': False, 'team': False, 'teamId': None, 'list_order': "list-1,list-2,list-3", 'updated': datetime.datetime.now(),
+            {'userId': 2, 'board_name': 'Coding Project', 'board_image': 'https://mello-zen-images.s3.amazonaws.com/zen-4.jpg',
+             'public': False, 'team': False, 'teamId': None, 'list_order': None, 'updated': datetime.datetime.now(),
              'created': datetime.datetime.now()},
             {'userId': 2, 'board_name': 'Home Remodel', 'board_image': 'https://mello-zen-images.s3.amazonaws.com/zen-2.jpg',
              'public': False, 'team': False, 'teamId': None, 'list_order': None, 'updated': datetime.datetime.now(),

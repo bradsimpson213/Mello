@@ -19,8 +19,6 @@ import {
 import styles from './Card.module.css';
 
 const Card = (props) => {
-    console.log('inside card component')
-    console.log(props.card)
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [cardTitle, setCardTitle] = useState(props.card.title)
     

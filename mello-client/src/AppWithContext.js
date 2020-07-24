@@ -9,31 +9,31 @@ const AppWithContext = () => {
   const [id, setId] = useState("");
   const [boardOrg, setBoardOrg] = useState({
     board: { "boardName": "Loading...", "board_image": "url"},
-    cards: {
-      "card-1": { id: "card-1", title: "Loading..." },
-      "card-2": { id: "card-2", title: "Plan database structure" },
-      "card-3": { id: "card-3", title: "Document project in readme file" },
-      "card-4": { id: "card-4", title: "Code.  Like a whole lot." },
-      "card-5": { id: "card-5", title: "Code some more." },
-    },
+    // cards: {
+    //   "card-1": { id: "card-1", title: "Loading..." },
+    //   // "card-2": { id: "card-2", title: "Loading..." },
+    //   // "card-3": { id: "card-3", title: "Document project in readme file" },
+    //   // "card-4": { id: "card-4", title: "Code.  Like a whole lot." },
+    //   // "card-5": { id: "card-5", title: "Code some more." },
+    // },
     lists: {
       "list-1": {
         id: "list-1",
         title: "Loading...",
-        cardIds: ["card-1", "card-2", "card-3", "card-4"],
-      },
-      "list-2": {
-        id: "list-2",
-        title: "In progress",
-        cardIds: ["card-5"],
-      },
-      "list-3": {
-        id: "list-3",
-        title: "Completed",
         cardIds: [],
       },
+      // "list-2": {
+      //   id: "list-2",
+      //   title: "In progress",
+      //   cardIds: ["card-5"],
+      // },
+      // "list-3": {
+      //   id: "list-3",
+      //   title: "Completed",
+      //   cardIds: [],
+      // },
     },
-    listOrder: ["list-1", "list-2", "list-3"],
+    listOrder: ["list-1"],
   });
 
   useEffect(() => {
