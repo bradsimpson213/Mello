@@ -12,6 +12,12 @@
     width: 35px;
     align-self: center;
 }
+ .music {
+    align-self: center;
+    height: 35px;
+    width: 35px;
+    color: white;
+ }
 
 .boardDropDown {
     grid-column: 4 / 5;
