@@ -20,7 +20,7 @@
 
 .melloIcon {
     height: 35px;
-    margin-left: 15px;
+    margin-left: 35px;
     margin-right: 5px;
 }
 
@@ -115,4 +115,24 @@
 .comingSoon {
     text-align: center;
     font-size: larger;
+}
+
+.boardForm{
+    width: 275px;
+    display: flex;
+    flex-direction: column;
+}
+
+.formLabel {
+    margin: 5px;
+    padding: 1px;
+}
+
+.backImage {
+    height: 150px;
+    width: 250px;
+    border: 1px solid darkgray;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, .4);
+    background-size: cover;
+    margin: 10px;
 }

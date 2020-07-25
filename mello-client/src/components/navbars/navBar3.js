@@ -63,8 +63,9 @@ const NavBar3 = () => {
                   onChange={setTimer}
                   width="200px"
                   background="whitesmoke"
-                  placeholder="Email"
+                  placeholder="Notification Timer"
                 />
+                <Button></Button>
                 <h4> Music Controls</h4>
 
                 <h4> Change Background </h4>
