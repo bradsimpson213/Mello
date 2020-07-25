@@ -105,13 +105,14 @@ const Boards = () => {
                     <form className={styles.boardForm} onSubmit={createBoard}>
                       <label className={styles.formLabel}>New Board Name</label>
                       <Input
+                        className={styles.formBoardName}
                         value={boardName}
                         onChange={setBoardName}
                         placeholder="Board Name"
                         type="text"
                       />
                       <label className={styles.formLabel}>New Board Name</label>
-                      <Select placeholder="Select background" onChange={setBoardImage}>
+                      <Select className={styles.formSelect} placeholder="Select background" onChange={setBoardImage}>
                         <option value="https://mello-zen-images.s3.amazonaws.com/zen-2.jpg">Bamboo Forrest</option>
                         <option value="https://mello-zen-images.s3.amazonaws.com/zen-3.jpg">Stones on Water</option>
                         <option value="https://mello-zen-images.s3.amazonaws.com/zen-4.jpg">Stones on Sand</option>
@@ -123,11 +124,15 @@ const Boards = () => {
                         <option value="https://mello-zen-images.s3.amazonaws.com/zen-11.jpg">Statue with Lotus</option>
                         <option value="https://mello-zen-images.s3.amazonaws.com/zen-12.jpg">Sunset Meditation</option>
                         <option value="https://mello-zen-images.s3.amazonaws.com/zen-13.jpg">Tree in Lake</option>
+                        <option value="https://mello-zen-images.s3.amazonaws.com/zen-14.jpg">Zen Skyline</option>
+                        <option value="https://mello-zen-images.s3.amazonaws.com/zen-15.jpg">Pagoda with Bamboo</option>
+                        <option value="https://mello-zen-images.s3.amazonaws.com/zen-16.jpg">Zen Garden 2</option>
                       </Select>
                       <div className={styles.backImage} style={{ backgroundImage: `url(${boardImage})`}}></div>
-                      <Button variantColor="blue" type="submit">
-                        Submit
-                      </Button>
+                      <div className={styles.formButtons}>
+                        <Button variantColor="blue" type="submit">Create New Baord</Button>
+                        <Button variantColor="red" >Cancel</Button>
+                      </div>
                     </form>
                   </ModalBody>
 

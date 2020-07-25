@@ -108,7 +108,7 @@
 .iconHelper {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: left;
     justify-self: end;
 }
 
@@ -118,21 +118,40 @@
 }
 
 .boardForm{
-    width: 275px;
+    width: 300px;
     display: flex;
     flex-direction: column;
+    justify-content: left;
+    margin-left: 10px;
 }
 
 .formLabel {
     margin: 5px;
+    margin-top: 10px;
     padding: 1px;
 }
 
+.formBoardName {
+    max-width:300px;
+}
+
+.formSelect {
+    min-width: 300px;
+}
+
 .backImage {
-    height: 150px;
-    width: 250px;
+    height: 175px;
+    width: 300px;
     border: 1px solid darkgray;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, .4);
     background-size: cover;
-    margin: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.formButtons {
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
