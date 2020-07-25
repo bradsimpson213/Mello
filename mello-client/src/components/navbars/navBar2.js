@@ -50,14 +50,14 @@ const NavBar2 = () => {
       <div className={styles.navBar2}>
         <FiHome
           className={styles.homeIcon}
-          onClick={<Redirect to="/boards" />}
+          // onClick={<Redirect to="/boards" />}
         />
         {icon ? (
           <GoUnmute className={styles.music} onClick={toggleAudio} />
         ) : (
           <GoMute className={styles.music} onClick={toggleAudio} />
         )}
-        <audio id="myAudio" autoplay="true" loop="true">
+        <audio id="myAudio" autoPlay="true" loop={true}>
           <source
             src="https://mello-music.s3.amazonaws.com/2020-06-18_-_Serenity_-_www.FesliyanStudios.com_David_Renda.mp3"
             type="audio/mpeg"

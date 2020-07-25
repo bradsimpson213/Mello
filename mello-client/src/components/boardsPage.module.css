@@ -40,13 +40,14 @@
     text-align: right;
     margin-right: 7px;
     margin-left: 7px;
-    font-size: 24px;
+    font-size: 26px;
 
 }
 .personalHolder {
     grid-area: "pbaords";
     display: flex;
-    flex-flow: row;   
+    flex-flow: row;
+    flex-wrap: wrap;   
 }
 
 .board {
@@ -55,6 +56,7 @@
     border: 1px solid darkgray;
     border-radius: 5px;
     background-size: cover;
+    text-decoration: none;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, .4);
     margin: 15px;
 }
@@ -96,7 +98,7 @@
     text-align: right;
     margin-right: 7px;
     margin-left: 7px;
-    font-size: 24px;
+    font-size: 26px;
 }
 
 .teamHolder {
@@ -108,8 +110,8 @@
 .iconHelper {
     display: flex;
     flex-direction: row;
-    align-items: left;
     justify-self: end;
+    align-self: initial;
 }
 
 .comingSoon {
@@ -142,11 +144,14 @@
 .backImage {
     height: 175px;
     width: 300px;
+    line-height: 175px;
+    text-align: center;
+    font-size: larger;
     border: 1px solid darkgray;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, .4);
     background-size: cover;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .formButtons {
@@ -154,4 +159,10 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+}
+
+.errors {
+    color: red;
+    font-weight: bold;
+    font-size: large;
 }

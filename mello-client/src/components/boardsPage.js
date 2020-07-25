@@ -24,6 +24,7 @@ import styles from './BoardsPage.module.css';
 const Boards = () => {
     const [boards, setBoards] = useState(null);
     const [teamBoards, setTeamBoards] = useState(null);
+    const [errors, setErrors] = useState();
     const [boardName, setBoardName, resetBoardName] =useInputState();
     const [boardImage, setBoardImage, resetBoardImage] = useInputState();
     const { user, token } = useContext(appContext);
@@ -50,16 +51,34 @@ const Boards = () => {
       setBoards(data.boards);
     };
 
-    const createBoard = async () => {
-      const res = await fetch(`${baseUrl}/boards/create`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: token,
-        },
-      });
-    const data = await res.json();
+    const createBoard = async (e) => {
+      e.preventDefault();
+
+      if (boardName && boardImage) {
+        const board = { boardName, boardImage };
+        closeModal();
+
+        const res = await fetch(`${baseUrl}/boards/create`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
+          body: JSON.stringify({ board, user }),
+        });
+        const data = await res.json();
+        setBoards(data.boards);
+      } else {
+        setErrors("Please provide a board name and board image!")
+      };
     };
+
+    const closeModal = () => {
+      onClose();
+      resetBoardName();
+      resetBoardImage();
+      setErrors(null);
+    }
 
 
     return (
@@ -102,6 +121,7 @@ const Boards = () => {
                   <ModalHeader>Create New Board</ModalHeader>
                   <ModalCloseButton />
                   <ModalBody>
+                    { errors ? (<p className={styles.errors}>{errors}</p>) : ('') }
                     <form className={styles.boardForm} onSubmit={createBoard}>
                       <label className={styles.formLabel}>New Board Name</label>
                       <Input
@@ -111,7 +131,7 @@ const Boards = () => {
                         placeholder="Board Name"
                         type="text"
                       />
-                      <label className={styles.formLabel}>New Board Name</label>
+                      <label className={styles.formLabel}>New Board Image</label>
                       <Select className={styles.formSelect} placeholder="Select background" onChange={setBoardImage}>
                         <option value="https://mello-zen-images.s3.amazonaws.com/zen-2.jpg">Bamboo Forrest</option>
                         <option value="https://mello-zen-images.s3.amazonaws.com/zen-3.jpg">Stones on Water</option>
@@ -128,10 +148,11 @@ const Boards = () => {
                         <option value="https://mello-zen-images.s3.amazonaws.com/zen-15.jpg">Pagoda with Bamboo</option>
                         <option value="https://mello-zen-images.s3.amazonaws.com/zen-16.jpg">Zen Garden 2</option>
                       </Select>
-                      <div className={styles.backImage} style={{ backgroundImage: `url(${boardImage})`}}></div>
+                      { boardImage ? (<div className={styles.backImage} style={{ backgroundImage: `url(${boardImage})`}}></div>) 
+                      : (<div className={styles.backImage} >Select A Board Image to Display</div>) }
                       <div className={styles.formButtons}>
                         <Button variantColor="blue" type="submit">Create New Baord</Button>
-                        <Button variantColor="red" >Cancel</Button>
+                        <Button variantColor="red" onClick={ closeModal }>Cancel</Button>
                       </div>
                     </form>
                   </ModalBody>

@@ -4,7 +4,7 @@ from ..models.boards import Board
 from ..models.lists import List
 from ..models.cards import Card
 from ..config import Config
-
+import datetime
 
 bp = Blueprint("boards", __name__, url_prefix="/boards")
 
@@ -86,3 +86,28 @@ def get_user_boards(userId):
         return {"boards": boards_dict}
     else:
         return {"error": "No Boards found for this User"}, 401
+
+
+# CREATE A NEW BOARD
+@bp.route("/create", methods={"POST"})
+def create_board():
+    data = request.json
+
+    board_name = data['board']['boardName']
+    board_image = data['board']['boardImage']
+    user_id = data['user']['id']
+
+    try:
+        new_board = Board(userId=user_id, board_name=board_name, board_image=board_image,
+                      updated=datetime.datetime.now(), created=datetime.datetime.now())
+
+        db.session.add(new_board)
+        db.session.commit()
+
+        boards = Board.query.filter(Board.userId == userId).all()
+        boards_dict = [board.to_dict() for board in boards]
+        return {"boards": boards_dict}
+      
+    except AssertionError as message:
+        print(str(message))
+        return jsonify({"error": str(message)}), 400
