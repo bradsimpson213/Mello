@@ -2,6 +2,16 @@ import React, { useEffect, useState, useContext } from 'react';
 import { Link } from "react-router-dom";
 import appContext from "../Context";
 import NavBar2 from './navbars/NavBar2';
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+} from "@chakra-ui/core";
 import { GrAddCircle } from 'react-icons/gr';
 import { FaUserAlt, FaUsers } from 'react-icons/fa';
 import { baseUrl } from "../config";
@@ -11,10 +21,10 @@ const Boards = () => {
     const [boards, setBoards] = useState(null);
     const [teamBoards, setTeamBoards] = useState(null);
     const { user, token } = useContext(appContext);
+     const { isOpen, onOpen, onClose } = useDisclosure();
 
     //THIS USE EFFECT GETS USERS BOARDS ON USER CHANGE (IDEALLY ONLY ONCE ON MOUNT)
     useEffect(() => {
-      console.log(user);
       if (user) {
         loadBoards();
       };

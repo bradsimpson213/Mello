@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
-import { Redirect } from 'react-router-dom';
+import React, { useContext, useState, useEffect } from 'react';
+import { Redirect, Link } from 'react-router-dom';
 import useToggle from '../hooks/useToggle';
 import { FiHome } from 'react-icons/fi';
 import { FaTrello } from 'react-icons/fa';
 import { GoMute, GoUnmute } from 'react-icons/go';
+import { baseUrl } from "../../config";
 import styles from './NavBar2.module.css';
 import { Avatar, Button, Icon, Input, InputGroup, InputRightElement, 
     Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/core";
@@ -12,7 +13,29 @@ import appContext from '../../Context'
 
 const NavBar2 = () => {
     const [icon, toggleIcon] = useToggle(true);
+    const [boards, setBoards] = useState(null);
     const myAudio = document.getElementById('myAudio')
+
+    const { user, token } = useContext(appContext);
+
+    useEffect(() => {
+      if (user) {
+        loadBoards();
+      }
+    }, [user]);
+
+    const loadBoards = async () => {
+      const res = await fetch(`${baseUrl}/boards/user/${user.id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+      });
+      const data = await res.json();
+      setBoards(data.boards);
+      
+    };
 
     const toggleAudio = () => {
       toggleIcon();
@@ -20,7 +43,8 @@ const NavBar2 = () => {
     };
 
     
-    const { user } = useContext(appContext);
+    console.log("board data");
+    console.log(boards);
 
     return (
       <div className={styles.navBar2}>
@@ -51,10 +75,22 @@ const NavBar2 = () => {
           >
             Boards
           </MenuButton>
-          <MenuList>
+          <MenuList className={styles.boardsContainer}>
             <MenuItem>Personal Boards</MenuItem>
-
-            <MenuItem>Team Boards</MenuItem>
+            {boards
+              ? boards.map((board) => (
+                  <Link
+                    to={`/lists/${board.id}`}
+                    className={styles.boardBox}
+                    key={board.id}
+                    style={{ backgroundImage: `url(${board.board_image})` }}
+                  >
+                    <p className={styles.boardName}>{board.board_name}</p>
+                  </Link>
+                ))
+              : ""}
+            <MenuItem className={styles.boardsBox}>Team Boards</MenuItem>
+            <p style={{'text-align':"center"}}>Coming Soon</p>
           </MenuList>
         </Menu>
         <InputGroup className={styles.search}>

@@ -24,7 +24,7 @@ const ListsPage = () => {
     
     const { boardId } = useParams()
     const { boardOrg, setBoardOrg, token } = useContext(appContext);
-    console.log(boardId);
+   
    
      //THIS USE EFFECT GETS BOARDS LISTS/CARDS (ONLY ONCE ON MOUNT)
     useEffect(() => {
@@ -33,11 +33,10 @@ const ListsPage = () => {
         const data = await res.json();
         const { board, cards, lists } = data;
         const loadBoardOrg = buildBoardOrg(board, cards, lists);
-        console.log(loadBoardOrg);
         setBoardOrg(loadBoardOrg);
        
         })();
-    }, []);
+    }, [boardId]);
     
     
     const addList = (e) => {

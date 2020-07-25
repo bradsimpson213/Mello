@@ -1,4 +1,4 @@
-import React, { useRef, useContext } from 'react';
+import React, { useRef, useContext, useState } from 'react';
 import {
   Drawer,
   DrawerBody,
@@ -21,8 +21,11 @@ import styles from './NavBar3.module.css';
 const NavBar3 = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const btnRef = useRef();
+    const [timer, setTimer] = useState();
 
-     const { boardOrg, setBoardOrg } = useContext(appContext);
+    const { user, boardOrg, setBoardOrg } = useContext(appContext);
+
+    console.log(user);
 
     return (
       <div className={styles.navBar3}>
@@ -55,7 +58,15 @@ const NavBar3 = () => {
               <DrawerHeader>Menu</DrawerHeader>
               <DrawerBody>
                 <h4> Preferences </h4>
+                <Input
+                  value={timer}
+                  onChange={setTimer}
+                  width="200px"
+                  background="whitesmoke"
+                  placeholder="Email"
+                />
                 <h4> Music Controls</h4>
+
                 <h4> Change Background </h4>
               </DrawerBody>
               <DrawerFooter>

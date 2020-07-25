@@ -2,7 +2,7 @@
     background: linear-gradient(135deg, #0079bf, #5067c5);
     height: 60px;
     display: grid;
-    grid-template-columns: 0.1fr 0.5fr 0.1fr 1fr 0.1fr 2fr 1fr 3fr 3fr 0.5fr 0.1fr;
+    grid-template-columns: 0.1fr 0.5fr 0.1fr 1.5fr 0.1fr 2fr 1fr 3fr 3fr 0.5fr 0.1fr;
 }
 
 .homeIcon {
@@ -23,10 +23,36 @@
     grid-column: 4 / 5;
     color: white;
     background: linear-gradient(135deg, #0079bf, #5067c5);
-    height: 175px;
+    height: auto;
+    width: 175px;
     align-self: center;
     justify-self: right;
     margin-top: 1px;
+}
+
+.boardsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.boardBox {
+    height: 85px;
+    border: 1px solid darkgray;
+    border-radius: 5px;
+    text-decoration: none;
+    background-size: cover;
+}
+
+.boardName {
+    font-size: larger;
+    text-align: center;
+    text-decoration: none;
+    align-self: center;
+    color: white;
+    text-shadow: -2px 2px 0 #000,
+				  2px 2px 0 #000,
+				 2px -2px 0 #000,
+				-2px -2px 0 #000;
 }
 
 .search {
