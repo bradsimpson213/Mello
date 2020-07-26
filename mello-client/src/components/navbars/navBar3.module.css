@@ -35,5 +35,11 @@
     box-shadow: 5px 5px 5px rgba(0, 0, 0, .4);
     background-size: cover;
     margin-top: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    margin-left: 35px;
 }
+
+.formLable {
+    margin-top: 7px;
+}
+

@@ -2,6 +2,7 @@ import React, { useRef, useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
   Button,
+  Divider,
   Drawer,
   DrawerBody,
   DrawerFooter,
@@ -29,6 +30,7 @@ import { baseUrl } from "../../config";
 import { MdArrowDropDown } from 'react-icons/md';
 import styles from './NavBar3.module.css';
 import useToggle from '../hooks/useToggle';
+import useInputState from '../hooks/useInputState';
 
 
 const NavBar3 = () => {
@@ -39,7 +41,7 @@ const NavBar3 = () => {
     const [music, toggleMusic] = useToggle(true);
     const [email, updateEmail] = useState();
     const [name, updateName] = useState();
-    const [boardImage, setBoardImage] = useState();
+    const [boardImage, updateBoardImage, resetBoardImage] = useInputState();
 
    
     
@@ -96,6 +98,7 @@ const NavBar3 = () => {
           >
             Show Menu
           </Button>
+        </div>
           <Drawer
             isOpen={isOpen}
             placement="right"
@@ -106,9 +109,9 @@ const NavBar3 = () => {
             <DrawerOverlay />
             <DrawerContent>
               <DrawerCloseButton />
-              <DrawerHeader>Menu - Update Settings</DrawerHeader>
+              <DrawerHeader >Menu - Update Settings</DrawerHeader>
               <DrawerBody>
-                <Stack spacing={3}>
+                <Stack >
                   <form onSubmit={ updateUser }>
                   <FormControl>
                     <FormLabel htmlFor="name">Name (First Last)</FormLabel>
@@ -148,17 +151,15 @@ const NavBar3 = () => {
                     type="music" aria-label="music-switch"
                     />
                   </FormControl>
-                    <Button type="submit">Update Settings</Button>
+                    <Button type="submit">Update User Settings</Button>
                   </form>
                 </Stack>
-               
-
-                <h4> Change Background </h4>
+                <Divider />  
                 <form onSubmit={ updateBackground }>
                 <FormControl >
-                  <FormLabel htmlFor="backImage">New Board Image</FormLabel>
+                  <FormLabel htmlFor="backImage">Change Board Background Image</FormLabel>
                   <InputGroup>
-                    <Select icon={MdArrowDropDown} id="backImage" className={styles.formSelect} placeholder="Select background" onChange={ setBoardImage }>
+                    <Select icon={MdArrowDropDown} id="backImage" placeholder="Select background" onChange={ updateBoardImage }>
                       <option value="https://mello-zen-images.s3.amazonaws.com/zen-2.jpg">Bamboo Forrest</option>
                       <option value="https://mello-zen-images.s3.amazonaws.com/zen-3.jpg">Stones on Water</option>
                       <option value="https://mello-zen-images.s3.amazonaws.com/zen-4.jpg">Stones on Sand</option>
@@ -180,22 +181,21 @@ const NavBar3 = () => {
                     : (<div className={styles.backImage} >Select A Board Image to Display</div>)}
                   <Button type="submit" >Update Background</Button>
                 </form>
-
-                <Button variantColor="red" onClick={ logOutUser } >Log Out</Button>
+                <Divider />
+                <Button variantColor="red" onClick={ logOutUser } >Log Out of Mello</Button>
                 
-
               </DrawerBody>
               <DrawerFooter>
                 <div>
                   <p>This website was mindfully designed by Brad Simpson</p>
-                  <a href="https://brad-simpson-website.herokuapp.com/">
+                  <a href="https://brad-simpson-website.herokuapp.com/" target="_blank">
                     Click Here to view my Personal Website
                   </a>
                 </div>
               </DrawerFooter>
             </DrawerContent>
           </Drawer>
-        </div>
+       
       </div>
     );
 }

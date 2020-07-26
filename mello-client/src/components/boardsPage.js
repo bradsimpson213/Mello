@@ -7,17 +7,14 @@ import {
   Button,
   FormControl,
   FormLabel,
-  FormHelperText,
   Icon,
   Input,
   InputGroup,
   InputLeftElement,
-  InputRightElement,
   Modal,
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
   Select,
@@ -32,8 +29,7 @@ import styles from './BoardsPage.module.css';
 
 const Boards = () => {
     const [boards, setBoards] = useState(null);
-    const [teamBoards, setTeamBoards] = useState(null);
-    const [errors, setErrors] = useState();
+    // const [teamBoards, setTeamBoards] = useState(null);
     const [boardName, setBoardName, resetBoardName] =useInputState();
     const [boardImage, setBoardImage, resetBoardImage] = useInputState();
     const { user, token } = useContext(appContext);
@@ -132,7 +128,7 @@ const Boards = () => {
                           <FormLabel htmlFor="newboard">New Board Name</FormLabel>
                           <InputGroup>
                             <InputLeftElement children={<Icon name="info-outline" />} />
-                            <Input id="newBoard"className={styles.formBoardName}
+                            <Input className={styles.formBoardName}
                             value={boardName} onChange={setBoardName}
                             placeholder="Board Name" type="text" aria-label="board-name"
                             />
