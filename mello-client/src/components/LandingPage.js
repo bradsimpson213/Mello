@@ -160,7 +160,7 @@ const Landing = () => {
                     </FormControl>  
                   </Stack>
                   <Button type="submit" variantColor="blue">Create User</Button>
-                  <Button variantColor="red" mr={3} onClick={ cancelCreateUser }>
+                  <Button variantColor="red" mr={3} onClick={ cancelCreateUser } style={{'margin-left': '7px'}}>
                     Cancel
                   </Button>
                 </form>

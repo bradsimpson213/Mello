@@ -35,11 +35,11 @@ def upgrade():
     op.bulk_insert(users_table,
         [
         {'name': 'Demo User', 'email': 'demo@gmail.com',
-            'hashed_password': generate_password_hash('demo1'), 'notification': 30000, 
+            'hashed_password': generate_password_hash('demo1'), 'notification': 5, 
             'music': True, 'last_login': datetime.datetime.now(), 
             'created': datetime.datetime.now()},
         {'name': 'Brad Simpson', 'email': 'bradsimpson@icloud.com',
-             'hashed_password': generate_password_hash('konadog4'), 'notification': 30000,
+             'hashed_password': generate_password_hash('konadog4'), 'notification': 5,
              'music': True, 'last_login': datetime.datetime.now(),
              'created': datetime.datetime.now()}
         ]

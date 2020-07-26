@@ -20,9 +20,9 @@ import { baseUrl } from "../config";
 
 
 const LogInPage = () => {
-    const [email, updateEmail] = useInputState("");
-    const [password, updatePassword] = useInputState("");
-    const [loggedIn, setLoggedIn] = useState(false);
+    const [email, updateEmail] = useState();
+    const [password, updatePassword] = useState(null);
+    const [loggedIn, setLoggedIn] = useState(null);
     const [show, toggleShow] = useToggle(false);
     
     const { login } = useContext(appContext);
@@ -45,10 +45,11 @@ const LogInPage = () => {
             } 
         };
     
-    // const demoLogin = () => {
-    //     updateEmail("demo@gmail.com");
-    //     updatePassword("demo1");
-    // };
+    const demoLogin = () => {
+        updateEmail("demo@gmail.com");
+        updatePassword("demo1");
+      
+    };
 
 
     return (
@@ -70,7 +71,7 @@ const LogInPage = () => {
                 src="https://mello-landing-images.s3.amazonaws.com/LoginImage1.png"
                 alt="Buddhist Temple"
               />
-              <div onSubmit={loginSubmit} className={styles.loginBox}>
+              <div className={styles.loginBox}>
                 <form onSubmit={loginSubmit} className={styles.loginForm}>
                   <h4>Please Log in to Mello</h4>
                   <Stack spacing={3}>
@@ -108,6 +109,7 @@ const LogInPage = () => {
                     >
                       Log In
                     </Button>
+                    <Button type="submit" onClick={ demoLogin }>Demo Login</Button>
                   </Stack>
                 </form>
                 <div className={styles.linkBox}>

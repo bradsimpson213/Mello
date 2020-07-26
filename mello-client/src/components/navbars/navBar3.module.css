@@ -8,10 +8,11 @@
 }
 
 .boardName {
-    grid-column: 2 / 3 ;
+    grid-column: 2 / 5 ;
     color: white;
     text-align: left;
     font-weight: bold;
+    overflow-x: visible;
     font-size: 26px;
     text-shadow: -2px 2px 0 #000,
 				  2px 2px 0 #000,
@@ -22,4 +23,17 @@
 .drawerButton {
     grid-column: 7 / 8 ;
     justify-self: right;
+}
+
+.backImage {
+    height: 175px;
+    width: 300px;
+    line-height: 175px;
+    text-align: center;
+    font-size: larger;
+    border: 1px solid darkgray;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, .4);
+    background-size: cover;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }

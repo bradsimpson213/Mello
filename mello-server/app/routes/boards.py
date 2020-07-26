@@ -82,7 +82,6 @@ def get_user_boards(userId):
 
     if boards:
         boards_dict = [board.to_dict() for board in boards]
-        print(boards_dict)
         return {"boards": boards_dict}
     else:
         return {"error": "No Boards found for this User"}, 401
@@ -111,3 +110,21 @@ def create_board():
     except AssertionError as message:
         print(str(message))
         return jsonify({"error": str(message)}), 400
+
+
+#  CHANGE BOARD NAME BY BOARD ID
+@bp.route("/update/<int:boardId>", methods=["POST"])
+def change_board_name(boardId):
+    data = request.json
+   
+    new_board_name = data['boardName']
+    
+    board = Board.query.filter(Board.id == boardId).one()
+   
+    if board:
+        board.board_name = new_board_name
+        db.session.commit()
+        print(f'Board name updated to {new_board_name}!')
+        return {"boards": board.to_dict()}
+    else:
+        return {"error": "Could not change Board's namer"}, 401       

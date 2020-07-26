@@ -18,6 +18,8 @@ const NavBar2 = () => {
 
     const { user, token } = useContext(appContext);
     let history = useHistory();
+
+    console.log(user.music);
     
     useEffect(() => {
       if (user) {
@@ -58,15 +60,15 @@ const NavBar2 = () => {
         ) : (
           <GoMute className={styles.music} onClick={toggleAudio} />
         )}
-        <audio id="myAudio" autoPlay={true} loop={true}>
+        <audio id="myAudio" autoPlay={ user ? user.music : true } loop={true}>
           <source
             src="https://mello-music.s3.amazonaws.com/2020-06-18_-_Serenity_-_www.FesliyanStudios.com_David_Renda.mp3"
             type="audio/mpeg"
           />
-          <source
+          {/* <source
             src="https://mello-music.s3.amazonaws.com/2019-04-06_-_Deep_Meditation_-_David_Fesliyan.mp3"
             type="audio/mpeg"
-          />
+          /> */}
         </audio>
         <Menu>
           <MenuButton

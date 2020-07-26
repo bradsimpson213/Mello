@@ -6,6 +6,7 @@ import {
   Editable,
   EditablePreview,
   EditableInput,
+  Input,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -62,6 +63,8 @@ const Card = (props) => {
                     <Text fontWeight="bold" mb="1rem">
                       You can scroll the content behind the modal
                     </Text>
+                    <Input type="color" />
+                    <Input type="text" />
                   </ModalBody>
                   <ModalFooter>
                     <Button variantColor="blue" mr={3} onClick={onClose}>

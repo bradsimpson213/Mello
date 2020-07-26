@@ -132,7 +132,7 @@ const Boards = () => {
                           <FormLabel htmlFor="newboard">New Board Name</FormLabel>
                           <InputGroup>
                             <InputLeftElement children={<Icon name="info-outline" />} />
-                            <Input className={styles.formBoardName}
+                            <Input id="newBoard"className={styles.formBoardName}
                             value={boardName} onChange={setBoardName}
                             placeholder="Board Name" type="text" aria-label="board-name"
                             />

@@ -5,6 +5,12 @@
     text-align: left;
     padding-left: 15px;
     margin: 2px;
+    color: black;
+    text-shadow: -2px 2px 0 whitesmoke,
+				  2px 2px 0 whitesmoke,
+				 2px -2px 0 whitesmoke,
+				-2px -2px 0 whitesmoke;
+
 }
 
 .modalContainer {
@@ -12,7 +18,7 @@
     min-width: 400px;
 }
 
-.cardHolder:hover {
+/* .cardHolder:hover {
     transform: rotate(25);
 
-}
+} */
