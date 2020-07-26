@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect, Link, useHistory } from 'react-router-dom';
 import useToggle from '../hooks/useToggle';
 import { FiHome } from 'react-icons/fi';
 import { FaTrello } from 'react-icons/fa';
@@ -17,7 +17,8 @@ const NavBar2 = () => {
     const myAudio = document.getElementById('myAudio')
 
     const { user, token } = useContext(appContext);
-
+    let history = useHistory();
+    
     useEffect(() => {
       if (user) {
         loadBoards();
@@ -42,15 +43,15 @@ const NavBar2 = () => {
       return myAudio.paused ? myAudio.play() : myAudio.pause();
     };
 
-    
-    console.log("board data");
-    console.log(boards);
+    const handleClick = () => {
+      history.push("/boards");
+    };
 
     return (
       <div className={styles.navBar2}>
         <FiHome
           className={styles.homeIcon}
-          // onClick={<Redirect to="/boards" />}
+          onClick={ handleClick }
         />
         {icon ? (
           <GoUnmute className={styles.music} onClick={toggleAudio} />
