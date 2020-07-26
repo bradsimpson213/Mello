@@ -25,7 +25,7 @@ def upgrade():
     sa.Column('email', sa.String(length=100), nullable=False),
     sa.Column('hashed_password', sa.String(length=100), nullable=False),
     sa.Column('notification', sa.Integer(), nullable=True),
-    sa.Column('theme', sa.String(length=50), nullable=True),
+    sa.Column('music', sa.Boolean(), nullable=True),
     sa.Column('last_login', sa.DateTime(), nullable=False),
     sa.Column('created', sa.DateTime(), nullable=False),
     sa.PrimaryKeyConstraint('id'),
@@ -36,11 +36,11 @@ def upgrade():
         [
         {'name': 'Demo User', 'email': 'demo@gmail.com',
             'hashed_password': generate_password_hash('demo1'), 'notification': 30000, 
-            'theme': None, 'last_login': datetime.datetime.now(), 
+            'music': True, 'last_login': datetime.datetime.now(), 
             'created': datetime.datetime.now()},
         {'name': 'Brad Simpson', 'email': 'bradsimpson@icloud.com',
              'hashed_password': generate_password_hash('konadog4'), 'notification': 30000,
-             'theme': None, 'last_login': datetime.datetime.now(),
+             'music': True, 'last_login': datetime.datetime.now(),
              'created': datetime.datetime.now()}
         ]
     )

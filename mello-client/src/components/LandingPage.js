@@ -1,7 +1,8 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useContext } from 'react';
 import useInputState from './hooks/useInputState';
 import useToggle from './hooks/useToggle';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import appContext from '../Context';
 import {
   Button,
   Drawer,
@@ -21,9 +22,9 @@ import {
   InputRightElement,
   Stack,
   useDisclosure,
-} from "@chakra-ui/core";
-import styles from "./LandingPage.module.css";
-import { baseUrl } from "../config";
+} from '@chakra-ui/core';
+import styles from './LandingPage.module.css';
+import { baseUrl } from '../config';
 
 
 const Landing = () => {
@@ -36,6 +37,10 @@ const Landing = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const btnRef = useRef();
 
+    const { login } = useContext(appContext);
+    
+    let history = useHistory();
+
     //THIS USE EFFECT GETS NEW RANDOM QUOTE (ONLY ONCE ON MOUNT)
     useEffect(() => {
         (async () => {
@@ -47,10 +52,31 @@ const Landing = () => {
     }, []);
 
     const cancelCreateUser = () => {
-        onClose();
-        resetEmail();
-        resetName();
-        resetPassword();
+      onClose();
+      resetEmail();
+      resetName();
+      resetPassword();
+    };
+
+    const createUser = async (e) => {
+      e.preventDefault();
+
+      const user = { email, name, password };
+      cancelCreateUser();
+
+      try {
+        const res = await fetch(`${baseUrl}/users/create`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user }),
+        });
+        const data = await res.json();
+        login(data.access_token, data.user);
+        history.push("/boards");
+
+      } catch (err) {
+        alert("It appears there was an error creating you account. Please meditate for a moment and then try again.  Namaste!");
+      }; 
     };
 
     return (
@@ -87,7 +113,7 @@ const Landing = () => {
                 <DrawerCloseButton />
                 <DrawerHeader>Create New Account</DrawerHeader>
                 <DrawerBody>
-                <form action="submit">
+                <form action="submit" onSubmit={ createUser }>
                   <Stack> 
                     <FormControl isRequired>
                       <FormLabel htmlFor="name">Name</FormLabel>
@@ -112,7 +138,7 @@ const Landing = () => {
                       </FormHelperText>
                     </FormControl>
                     <FormControl isRequired>
-                      <FormLabel htmlFor="password">Email address</FormLabel>
+                      <FormLabel htmlFor="password">Password</FormLabel>
                       <InputGroup size="md">
                         <InputLeftElement children={<Icon name="lock" />}/>
                         <Input

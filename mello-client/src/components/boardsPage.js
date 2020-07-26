@@ -63,11 +63,11 @@ const Boards = () => {
     const createBoard = async (e) => {
       e.preventDefault();
 
-      if (boardName && boardImage) {
-        const board = { boardName, boardImage };
-        closeModal();
+      
+    const board = { boardName, boardImage };
+    closeModal();
 
-        const res = await fetch(`${baseUrl}/boards/create`, {
+      const res = await fetch(`${baseUrl}/boards/create`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -77,16 +77,12 @@ const Boards = () => {
         });
         const data = await res.json();
         setBoards(data.boards);
-      } else {
-        setErrors("Please provide a board name and board image!")
-      };
     };
 
     const closeModal = () => {
       onClose();
       resetBoardName();
       resetBoardImage();
-      setErrors(null);
     }
 
 
@@ -130,7 +126,6 @@ const Boards = () => {
                   <ModalHeader>Create New Board</ModalHeader>
                   <ModalCloseButton />
                   <ModalBody>
-                    { errors ? (<p className={styles.errors}>{errors}</p>) : ('') }
                     <form className={styles.boardForm} onSubmit={createBoard}>
                       <Stack spacing={3}>
                         <FormControl isRequired>

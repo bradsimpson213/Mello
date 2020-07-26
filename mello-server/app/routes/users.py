@@ -1,4 +1,4 @@
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 from ..models import db
 from ..models.users import User
 from ..config import Config
@@ -42,10 +42,14 @@ def get_user_by_id(userId):
 @bp.route("/create", methods=["POST"])
 def create_user():
     data = request.json
+    
+    user_name = data['user']['name']
+    user_email = data['user']['email']
+    user_password = data['user']['password']
 
     try:
-        user = User(username=data['username'], email=data['email'], 
-                    password=data['password'], last_login=datetime.datetime.now())
+        user = User(name=user_name, email=user_email, password=user_password, 
+                    last_login=datetime.datetime.now(), created=datetime.datetime.now())
         db.session.add(user)
         db.session.commit()
 

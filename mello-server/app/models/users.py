@@ -11,7 +11,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(100), nullable=False, unique=True)
     hashed_password = db.Column(db.String(100), nullable=False)
     notification = db.Column(db.Integer, default=300000)
-    theme = db.Column(db.String(50))
+    music = db.Column(db.Boolean, default=True )
     last_login = db.Column(db.DateTime, nullable=False)
     created = db.Column(db.DateTime, nullable=False)
 
@@ -43,5 +43,5 @@ class User(db.Model, UserMixin):
 
     def to_dict(self):
         return { "id": self.id, "name": self.name, "email": self.email,
-                "notification": self.notification, "theme": self.theme, 
+                "notification": self.notification, "music": self.music, 
                 "last_login": self.last_login, "created": self.created } 

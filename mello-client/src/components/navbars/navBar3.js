@@ -51,6 +51,7 @@ const NavBar3 = () => {
             placement="right"
             onClose={onClose}
             finalFocusRef={btnRef}
+            size="sm"
           >
             <DrawerOverlay />
             <DrawerContent>
@@ -69,6 +70,7 @@ const NavBar3 = () => {
                 <h4> Music Controls</h4>
 
                 <h4> Change Background </h4>
+                
               </DrawerBody>
               <DrawerFooter>
                 <div>

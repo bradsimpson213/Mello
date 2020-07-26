@@ -104,7 +104,7 @@ def create_board():
         db.session.add(new_board)
         db.session.commit()
 
-        boards = Board.query.filter(Board.userId == userId).all()
+        boards = Board.query.filter(Board.userId == user_id).all()
         boards_dict = [board.to_dict() for board in boards]
         return {"boards": boards_dict}
       
