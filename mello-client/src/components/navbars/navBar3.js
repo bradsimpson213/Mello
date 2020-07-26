@@ -1,4 +1,5 @@
 import React, { useRef, useContext, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   Drawer,
   DrawerBody,
@@ -23,9 +24,17 @@ const NavBar3 = () => {
     const btnRef = useRef();
     const [timer, setTimer] = useState();
 
-    const { user, boardOrg, setBoardOrg } = useContext(appContext);
+    const { user, boardOrg, setBoardOrg, logout } = useContext(appContext);
+    let history = useHistory();
 
     console.log(user);
+
+    const logOutUser = () => {
+     
+      logout();
+      // onClose();
+      history.push("/");
+    };
 
     return (
       <div className={styles.navBar3}>
@@ -58,7 +67,7 @@ const NavBar3 = () => {
               <DrawerCloseButton />
               <DrawerHeader>Menu</DrawerHeader>
               <DrawerBody>
-                <h4> Preferences </h4>
+                <h4> User Settings </h4>
                 <Input
                   value={timer}
                   onChange={setTimer}
@@ -66,15 +75,19 @@ const NavBar3 = () => {
                   background="whitesmoke"
                   placeholder="Notification Timer"
                 />
-                <Button></Button>
                 <h4> Music Controls</h4>
 
                 <h4> Change Background </h4>
+
+                <Button>Update Settings</Button>
+
+                <Button variantColor="red" onClick={ logOutUser } >Log Out</Button>
                 
+
               </DrawerBody>
               <DrawerFooter>
                 <div>
-                  <p>This website was designed by Brad Simpson</p>
+                  <p>This website was mindfully designed by Brad Simpson</p>
                   <a href="https://brad-simpson-website.herokuapp.com/">
                     Click Here to view my Personal Website
                   </a>

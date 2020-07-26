@@ -72,14 +72,14 @@ const AppWithContext = () => {
     setUser(user);
     setId(user.id);
   };
-//   const logout = () => {
-//     localStorage.setItem("token", null);
-//     localStorage.setItem("id", null);
-//     localStorage.setItem("user", null);
-//     setToken(null);
-//     setUser(null);
-//     setId(null);
-//   };
+  const logout = () => {
+    localStorage.setItem("token", null);
+    localStorage.setItem("id", null);
+    localStorage.setItem("user", null);
+    setToken(null);
+    setUser(null);
+    setId(null);
+  };
 
   // const boardOrg = {
   //   cards: {
@@ -98,7 +98,7 @@ const AppWithContext = () => {
   //   listOrder:['list-1'],
   // };
 
-  const context = { login, user, id, boardOrg, setBoardOrg, token };
+  const context = { login, logout, user, id, boardOrg, setBoardOrg, token };
   return (
     <AppContext.Provider value={context}>
       <App />

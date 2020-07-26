@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Redirect, Link, useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import useToggle from '../hooks/useToggle';
 import { FiHome } from 'react-icons/fi';
 import { FaTrello } from 'react-icons/fa';
@@ -58,7 +58,7 @@ const NavBar2 = () => {
         ) : (
           <GoMute className={styles.music} onClick={toggleAudio} />
         )}
-        <audio id="myAudio" autoPlay="true" loop={true}>
+        <audio id="myAudio" autoPlay={true} loop={true}>
           <source
             src="https://mello-music.s3.amazonaws.com/2020-06-18_-_Serenity_-_www.FesliyanStudios.com_David_Renda.mp3"
             type="audio/mpeg"

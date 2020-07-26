@@ -65,7 +65,7 @@ const Boards = () => {
 
       
     const board = { boardName, boardImage };
-    closeModal();
+      closeModal();
 
       const res = await fetch(`${baseUrl}/boards/create`, {
           method: "POST",
