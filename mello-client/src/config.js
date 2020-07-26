@@ -1,2 +1,2 @@
 export const baseUrl =
-  process.env.REACT_APP_SERVER_URL || "http://localhost:5000";
+  process.env.NODE_ENV === 'production' ? 'https://mello-app1.herokuapp.com' : process.env.REACT_APP_SERVER_URL

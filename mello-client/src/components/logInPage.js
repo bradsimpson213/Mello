@@ -20,9 +20,9 @@ import { baseUrl } from "../config";
 
 
 const LogInPage = () => {
-    const [email, updateEmail] = useState();
-    const [password, updatePassword] = useState(null);
-    const [loggedIn, setLoggedIn] = useState(null);
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState("");
+    const [loggedIn, setLoggedIn] = useState("");
     const [show, toggleShow] = useToggle(false);
     
     const { login } = useContext(appContext);
@@ -43,12 +43,16 @@ const LogInPage = () => {
             } catch (err) {
                 alert("It appears you provided an incorrect login. Please meditate for a moment and then try again.  Namaste!");
             } 
-        };
+    };
+
+    const setFormValues = (e) => {
+      if (e.target.name === 'email') setEmail(e.target.value)
+      else if (e.target.name === 'password') setPassword(e.target.value)
+    };
     
     const demoLogin = () => {
-        updateEmail("demo@gmail.com");
-        updatePassword("demo1");
-      
+        setEmail("demo@gmail.com");
+        setPassword("demo1");
     };
 
 
@@ -79,7 +83,7 @@ const LogInPage = () => {
                       <FormLabel htmlFor="email">Email address</FormLabel>
                       <InputGroup>
                         <InputLeftElement children={<Icon name="email" />} />
-                        <Input id="email" value={email} onChange={updateEmail}
+                        <Input name="email" id="email" value={ email } onChange={ setFormValues }
                          background="whitesmoke" placeholder="Email" aria-label="email"/>
                       </InputGroup>
                     </FormControl>
@@ -88,11 +92,11 @@ const LogInPage = () => {
                       <InputGroup>
                           <InputLeftElement children={<Icon name="lock" />} />
                           <Input
-                            id="password" pr="4.5rem" aria-label="password"
+                            id="password" pr="4.5rem" aria-label="password" name="password"
                             type={show ? "text" : "password"}
                             placeholder="Enter password"
-                            value={password}
-                            onChange={updatePassword}
+                            value={ password }
+                            onChange={ setFormValues }
                           />
                           <InputRightElement width="4.5rem">
                             <Button h="1.75rem" size="sm" onClick={toggleShow}>
