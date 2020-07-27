@@ -18,7 +18,40 @@
     min-width: 400px;
 }
 
-/* .cardHolder:hover {
-    transform: rotate(25);
+.modalTitle {
+    width: 450px;
+}
 
-} */
+.detailText {
+    min-height: 65px;
+    height: auto;
+    width: 450px;
+    color: black;
+    font-family: Helvetica, sans-serif;
+    font-size: large;
+    background: lightgray;
+    border: solid 1px darkgray;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, .4);
+    border-radius: 7px;
+    align-content: center;
+    padding-left: 10px;
+    margin-bottom: 15px;
+}
+
+.textArea {
+    max-width: 450px;
+}
+
+.detailButton {
+    margin: 10px;
+}
+
+.colorPick {
+    height: 65px;
+    max-width:  430px;
+}
+
+.modalButtons {
+    align-items: left;
+    margin-right: 15px;
+}

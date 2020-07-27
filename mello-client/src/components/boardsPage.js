@@ -158,7 +158,7 @@ const Boards = () => {
                       { boardImage ? (<div className={styles.backImage} style={{ backgroundImage: `url(${boardImage})`}}></div>) 
                       : (<div className={styles.backImage} >Select A Board Image to Display</div>) }
                       <div className={styles.formButtons}>
-                        <Button variantColor="blue" type="submit">Create New Baord</Button>
+                        <Button variantColor="blue" type="submit">Create New Board</Button>
                         <Button variantColor="red" onClick={ closeModal }>Cancel</Button>
                       </div>
                       </Stack>  

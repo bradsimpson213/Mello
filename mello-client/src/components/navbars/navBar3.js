@@ -1,4 +1,4 @@
-import React, { useRef, useContext, useState } from 'react';
+import React, { useRef, useContext, useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
   Button,
@@ -37,17 +37,15 @@ const NavBar3 = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const { user, boardOrg, setBoardOrg, logout, token } = useContext(appContext);
     const btnRef = useRef();
-    const [timer, setTimer] = useState();
-    const [music, toggleMusic] = useToggle(true);
-    const [email, updateEmail] = useState();
-    const [name, updateName] = useState();
+    const [timer, setTimer] = useState(user.timer);
+    const [music, toggleMusic] = useToggle(user.music);
+    const [email, updateEmail] = useState(user.email);
+    const [name, updateName] = useState(user.name);
     const [boardImage, updateBoardImage, resetBoardImage] = useInputState();
-
-   
-    
-
     const [boardName, setBoardName] = useState();
     let history = useHistory();
+
+    let count = 1;
 
     const logOutUser = () => {
       logout();
@@ -68,6 +66,23 @@ const NavBar3 = () => {
       const data = await res.json();
       setBoardName(data.boards.board_name);
     };
+  
+    const mindBreak = () => {
+      alert("Time for a break! Meditate for a few minutes to clear your mind!")
+    };
+
+    useEffect(() => {
+      if (!user.notification) {
+        return;
+      };
+
+      if (user.notification !== 0) {
+       
+        const notifTimer = setTimeout( mindBreak, 
+        [(user.notification * 60000)]);
+        count++;
+      };  
+    }, [user.notification, count]);
 
     const updateUser = async() => {
 
