@@ -16,7 +16,7 @@ def create_new_card():
     print(data)
     list_id = int(data['listId'][5])
     print(list_id)
-    
+
     try:
         this_list = List.query.get(list_id)
         print(this_list)
@@ -60,12 +60,13 @@ def change_card_details(cardId):
 
     data = request.json
     new_card_detail = data['cardDetail']
- 
+    print(new_card_detail)
     card = Card.query.filter(Card.id == cardId).one()
 
     if card:
         card.details = new_card_detail
         db.session.commit()
+        print(f'Card details updated to {new_card_detail}!')
         return {"card": card.to_dict()}
     else:
         return {"error": "Could not update details"}, 401
@@ -77,15 +78,15 @@ def change_card_color(cardId):
 
     data = request.json
 
-    print(data)
+    # print(data)
     new_card_color = data['cardColor']
-    print(new_card_color)
+    # print(new_card_color)
     card = Card.query.filter(Card.id == cardId).one()
 
     if card:
         card.color = new_card_color
         db.session.commit()
-        print(f'Card details updated to {new_card_color}!')
+       
         return {"card": card.to_dict()}
     else:
         return {"error": "Could not update card color"}, 401

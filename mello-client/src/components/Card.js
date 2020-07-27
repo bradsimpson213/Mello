@@ -68,8 +68,9 @@ const Card = (props) => {
           "Content-Type": "application/json",
           Authorization: token,
         },
-        body: JSON.stringify({ cardColor }),
+        body: JSON.stringify({ cardDetail }),
       });
+      hideCollapse();
     };
     
 
@@ -146,7 +147,7 @@ const Card = (props) => {
                     <Text fontWeight="bold" fontSize="lg" mb="1rem">Card Description:</Text>
                     <Box className={styles.detailText} onClick={openCollapse} hidden={hidden}>{ cardDetail ? cardDetail : "Click to enter details..." }</Box>
                       <Collapse className={styles.collapseCard} isOpen={show}>
-                        <form>
+                        <form >
                           <Textarea
                             className={styles.textArea}
                             value={cardDetail}
@@ -154,7 +155,7 @@ const Card = (props) => {
                             placeholder="Enter details for this card..."
                           />
                           <div>
-                            <Button className={styles.detailButton} variantColor="green" type="submit">
+                            <Button className={styles.detailButton} onClick={ saveCardDetail } variantColor="green" >
                               Save Description
                             </Button>
                             <CloseButton onClick={hideCollapse} />
