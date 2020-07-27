@@ -33,6 +33,7 @@ const ListsPage = () => {
         const data = await res.json();
         const { board, cards, lists } = data;
         const loadBoardOrg = buildBoardOrg(board, cards, lists);
+        console.log(loadBoardOrg);
         setBoardOrg(loadBoardOrg);
        
         })();

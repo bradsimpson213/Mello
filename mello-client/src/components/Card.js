@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import NaturalDragAnimation from "natural-drag-animation-rbdnd";
+import appContext from "../Context";
 import {
   Box,
   Button,
@@ -26,6 +27,7 @@ import {
 } from "@chakra-ui/core";
 import useToggle from './hooks/useToggle';
 import useInputState from './hooks/useInputState';
+import { baseUrl } from "../config";
 import styles from './Card.module.css';
 
 const Card = (props) => {
@@ -33,22 +35,60 @@ const Card = (props) => {
     const [hidden, toggleHidden] = useToggle(false);
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [cardTitle, setCardTitle] = useState(props.card.title);
-    const [cardDetail, updateCardDetail] = useInputState(props.card.description);
-    const [cardColor, updateCardColor] =useInputState(props.card.color);
+    const [cardDetail, updateCardDetail] = useInputState(props.card.detail ? props.card.detail : '');
+    const [cardColor, updateCardColor] =useInputState(props.card.color ? props.card.color : '');
 
-    console.log(cardTitle, cardDetail, cardColor);
+    const { token } = useContext(appContext);
 
-    const saveCardName = () => {
+    console.log(props);
 
+    const saveCardName = async() => {
+      
+      const cardIdStr = props.card.id.slice(5);
+      const cardId = parseInt(cardIdStr);
+     
+      const res = await fetch(`${baseUrl}/cards/title/${cardId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+        body: JSON.stringify({ cardId, cardTitle }),
+      });
     };
 
-    const saveCardDetail = () => {
+    const saveCardDetail = async() => {
 
+      const cardIdStr = props.card.id.slice(5);
+      const cardId = parseInt(cardIdStr);
+
+      const res = await fetch(`${baseUrl}/cards/details/${cardId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+        body: JSON.stringify({ cardColor }),
+      });
     };
+    
 
-    const saveCard = () => {
+    const saveCard = async() => {
 
+      const cardIdStr = props.card.id.slice(5);
+      const cardId = parseInt(cardIdStr);
+
+      const res = await fetch(`${baseUrl}/cards/color/${cardId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+        body: JSON.stringify({ cardColor }),
+      });
+      onClose();
     };
+  
 
     const deleteCard = () => {
 
@@ -76,11 +116,12 @@ const Card = (props) => {
               ref={provided.innerRef}
               {...provided.draggableProps}
               {...provided.dragHandleProps}
-              style={style}
+              style={ style }
               className={styles.cardHolder}
+
               onClick={onOpen}
             >
-              <h4>{cardTitle}</h4>
+                <h4 style={{'color': `${cardColor ? cardColor : 'black'}`} }>{cardTitle}</h4>
               <Modal
                 blockScrollOnMount={false}
                 size="xl"
@@ -105,7 +146,7 @@ const Card = (props) => {
                     <Text fontWeight="bold" fontSize="lg" mb="1rem">Card Description:</Text>
                     <Box className={styles.detailText} onClick={openCollapse} hidden={hidden}>{ cardDetail ? cardDetail : "Click to enter details..." }</Box>
                       <Collapse className={styles.collapseCard} isOpen={show}>
-                        <form onSubmit={ saveCardDetail }>
+                        <form>
                           <Textarea
                             className={styles.textArea}
                             value={cardDetail}
@@ -123,17 +164,17 @@ const Card = (props) => {
                     <Divider />
                     <form onSubmit={ saveCard }>
                       <FormControl>
-                        <FormLabel htmlFor="color" fontWeight="bold" fontSize="lg" mb="1rem">Card Background:</FormLabel>
+                        <FormLabel htmlFor="color" fontWeight="bold" fontSize="lg" mb="1rem">Card Text Color:</FormLabel>
                         <Input id="color" className={styles.colorPick} type="color" value={ cardColor } onChange={ updateCardColor } />
                       </FormControl>
                     </form>
                   </ModalBody>
                   <ModalFooter >
-                      <Button type="submit" variantColor="green">Save Card</Button>
-                      <Button variantColor="blue" mr={3} onClick={onClose}>
+                      <Button style={{'marginRight': '15px'}} onClick= { saveCard } variantColor="green">Save Card</Button>
+                      <Button style={{'marginRight': '150px'}} variantColor="blue" mr={3} onClick={onClose}>
                         Close
                       </Button>
-                      <Button variantColor="red" onClick={ deleteCard }>Delete Card</Button>
+                      <Button style={{ 'marginRight': '40px' }}variantColor="red" onClick={ deleteCard }>Delete Card</Button>
                   </ModalFooter>
                 </ModalContent>
               </Modal>
