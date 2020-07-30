@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import useToggle from './hooks/useToggle';
-import useInputState from './hooks/useInputState'
+import useInputState from './hooks/useInputState';
 import { Button, CloseButton, Collapse, Editable,
      EditableInput, EditablePreview, Textarea } from '@chakra-ui/core';
 import { Draggable, Droppable } from 'react-beautiful-dnd';

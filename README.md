@@ -15,7 +15,7 @@ A Zen inspired Kanban board allows you to relax and mindfully evalute your progr
 - Zen music played in background while logged in (COMPLETED!) 
 - Sharing Boards (Teams)
 - Checklists and Due Dates
-- Hotkeys (Think this is part of React Beautiful DND)
+
 
 
 ## TECHNOLOGY USED

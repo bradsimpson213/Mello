@@ -71,24 +71,37 @@ const NavBar3 = () => {
       alert("Time for a break! Meditate for a few minutes to clear your mind!")
     };
 
-    useEffect(() => {
-      if (!user.notification) {
-        return;
-      };
+    // useEffect(() => {
+    //   if (!user.notification) {
+    //     return;
+    //   };
 
-      if (user.notification !== 0) {
+    //   if (user.notification !== 0) {
        
-        const notifTimer = setTimeout( mindBreak, 
-        [(user.notification * 60000)]);
-        count++;
-      };  
-    }, [user.notification, count]);
+    //     const notifTimer = setTimeout( mindBreak, 
+    //     [(user.notification * 60000)]);
+    //     count++;
+    //   };  
+    // }, [user.notification, count]);
 
     const updateUser = async() => {
 
     };
 
     const updateBackground = async() => {
+      
+      const boardId = boardOrg.board.id;
+      console.log(boardId);
+      const res = await fetch(`${baseUrl}/boards/newimage/${boardId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+        body: JSON.stringify({ boardImage }),
+      });
+      const data = await res.json();
+     console.log(data);
 
     };
 

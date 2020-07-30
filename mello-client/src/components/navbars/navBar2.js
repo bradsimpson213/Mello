@@ -18,8 +18,6 @@ const NavBar2 = () => {
 
     const { user, token } = useContext(appContext);
     let history = useHistory();
-
-    console.log(user.music);
     
     useEffect(() => {
       if (user) {
@@ -93,7 +91,7 @@ const NavBar2 = () => {
                 ))
               : ""}
             <MenuItem className={styles.boardsBox}>Team Boards</MenuItem>
-            <p style={{'text-align':"center"}}>Coming Soon</p>
+            <p style={{'textAlign':"center"}}>Coming Soon</p>
           </MenuList>
         </Menu>
         <InputGroup className={styles.search}>
