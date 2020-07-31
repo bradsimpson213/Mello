@@ -41,12 +41,12 @@ const NavBar3 = () => {
     const [music, toggleMusic] = useToggle(user.music);
     const [email, updateEmail] = useState(user.email);
     const [name, updateName] = useState(user.name);
-    const [boardImage, updateBoardImage, resetBoardImage] = useInputState();
-    const [boardName, setBoardName] = useState();
+    const [boardImage, updateBoardImage] = useInputState();
+    const [boardName, setBoardName] = useState('');
     let history = useHistory();
 
     let count = 1;
-
+    
     const logOutUser = () => {
       logout();
       history.push("/");
@@ -54,7 +54,7 @@ const NavBar3 = () => {
 
     const saveBoardName = async() => {
       const boardId = boardOrg.board.id;
-      console.log(boardId);
+
       const res = await fetch(`${baseUrl}/boards/update/${boardId}`, {
         method: "POST",
         headers: {
@@ -88,11 +88,12 @@ const NavBar3 = () => {
 
     };
 
-    const updateBackground = async() => {
-      
+    const updateBackground = async(e) => {
+      e.preventDefault();
+
       const boardId = boardOrg.board.id;
-      console.log(boardId);
-      const res = await fetch(`${baseUrl}/boards/newimage/${boardId}`, {
+
+      const res = await fetch(`${baseUrl}/boards/images/${boardId}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -101,8 +102,17 @@ const NavBar3 = () => {
         body: JSON.stringify({ boardImage }),
       });
       const data = await res.json();
-     console.log(data);
-
+      const newImage = data.boards.board_image;
+      console.log(data);
+      console.log(boardOrg);
+      const newContext = {
+        ...boardOrg,
+        board: {
+          id: boardOrg.board.id, 
+          boardName: boardOrg.board.boardName, 
+          boardImage: newImage },
+      };
+      setBoardOrg(newContext);
     };
 
     return (
@@ -184,27 +194,27 @@ const NavBar3 = () => {
                 </Stack>
                 <Divider />  
                 <form onSubmit={ updateBackground }>
-                <FormControl >
-                  <FormLabel htmlFor="backImage">Change Board Background Image</FormLabel>
-                  <InputGroup>
-                    <Select icon={MdArrowDropDown} id="backImage" placeholder="Select background" onChange={ updateBoardImage }>
-                      <option value="https://mello-zen-images.s3.amazonaws.com/zen-2.jpg">Bamboo Forrest</option>
-                      <option value="https://mello-zen-images.s3.amazonaws.com/zen-3.jpg">Stones on Water</option>
-                      <option value="https://mello-zen-images.s3.amazonaws.com/zen-4.jpg">Stones on Sand</option>
-                      <option value="https://mello-zen-images.s3.amazonaws.com/zen-5.jpg">Stones with Bamboo</option>
-                      <option value="https://mello-zen-images.s3.amazonaws.com/zen-6.jpg">Stacked Stones on Dock</option>
-                      <option value="https://mello-zen-images.s3.amazonaws.com/zen-8.jpg">More Stones on Sand</option>
-                      <option value="https://mello-zen-images.s3.amazonaws.com/zen-9.jpg">Zen Garden</option>
-                      <option value="https://mello-zen-images.s3.amazonaws.com/zen-10.jpg">Hammock Between Palms</option>
-                      <option value="https://mello-zen-images.s3.amazonaws.com/zen-11.jpg">Statue with Lotus</option>
-                      <option value="https://mello-zen-images.s3.amazonaws.com/zen-12.jpg">Sunset Meditation</option>
-                      <option value="https://mello-zen-images.s3.amazonaws.com/zen-13.jpg">Tree in Lake</option>
-                      <option value="https://mello-zen-images.s3.amazonaws.com/zen-14.jpg">Zen Skyline</option>
-                      <option value="https://mello-zen-images.s3.amazonaws.com/zen-15.jpg">Pagoda with Bamboo</option>
-                      <option value="https://mello-zen-images.s3.amazonaws.com/zen-16.jpg">Zen Garden 2</option>
-                    </Select>
-                  </InputGroup>
-                </FormControl>
+                  <FormControl >
+                    <FormLabel htmlFor="backImage">Change Board Background Image</FormLabel>
+                    <InputGroup>
+                      <Select icon={MdArrowDropDown} id="backImage" placeholder="Select Background" onChange={ updateBoardImage }>
+                        <option value="https://mello-zen-images.s3.amazonaws.com/zen-2.jpg">Bamboo Forrest</option>
+                        <option value="https://mello-zen-images.s3.amazonaws.com/zen-3.jpg">Stones on Water</option>
+                        <option value="https://mello-zen-images.s3.amazonaws.com/zen-4.jpg">Stones on Sand</option>
+                        <option value="https://mello-zen-images.s3.amazonaws.com/zen-5.jpg">Stones with Bamboo</option>
+                        <option value="https://mello-zen-images.s3.amazonaws.com/zen-6.jpg">Stacked Stones on Dock</option>
+                        <option value="https://mello-zen-images.s3.amazonaws.com/zen-8.jpg">More Stones on Sand</option>
+                        <option value="https://mello-zen-images.s3.amazonaws.com/zen-9.jpg">Zen Garden</option>
+                        <option value="https://mello-zen-images.s3.amazonaws.com/zen-10.jpg">Hammock Between Palms</option>
+                        <option value="https://mello-zen-images.s3.amazonaws.com/zen-11.jpg">Statue with Lotus</option>
+                        <option value="https://mello-zen-images.s3.amazonaws.com/zen-12.jpg">Sunset Meditation</option>
+                        <option value="https://mello-zen-images.s3.amazonaws.com/zen-13.jpg">Tree in Lake</option>
+                        <option value="https://mello-zen-images.s3.amazonaws.com/zen-14.jpg">Zen Skyline</option>
+                        <option value="https://mello-zen-images.s3.amazonaws.com/zen-15.jpg">Pagoda with Bamboo</option>
+                        <option value="https://mello-zen-images.s3.amazonaws.com/zen-16.jpg">Zen Garden 2</option>
+                      </Select>
+                    </InputGroup>
+                  </FormControl>
                   {boardImage ? (<div className={styles.backImage} style={{ backgroundImage: `url(${boardImage})` }}></div>)
                     : (<div className={styles.backImage} >Select A Board Image to Display</div>)}
                   <Button type="submit" >Update Background</Button>

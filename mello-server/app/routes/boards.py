@@ -41,8 +41,7 @@ def get_baord_details(boardId):
                 cards[f'card-{card_index}'] = {
                     'id': f'card-{card_index}', 'title': card_content, 'detail': card_detail, 'color': card_color 
                 }
-
-        print(cards)
+                
         return { 'board': board.to_dict(), 'lists': lists, 'cards': cards }   
 
     else:
@@ -56,7 +55,6 @@ def create_new_List():
    
     try:
         board = Board.query.get(data['board']['id'])
-        print(board)
         board.list_order = ','.join(data['listOrder'])
 
         lists = data['lists']
@@ -132,3 +130,22 @@ def change_board_name(boardId):
         return {"boards": board.to_dict()}
     else:
         return {"error": "Could not change Board's namer"}, 401       
+
+
+#  CHANGE BOARD IMAGE BY BOARD ID
+@bp.route("/images/<int:boardId>", methods=["POST"])
+def update_board_image(boardId):
+  
+    data = request.json
+   
+    new_board_image = data['boardImage']
+
+    board = Board.query.filter(Board.id == boardId).one()
+
+    if board:
+        board.board_image = new_board_image
+        db.session.commit()
+        print(f'Board image updated to {new_board_image}!')
+        return {"boards": board.to_dict()}
+    else:
+        return {"error": "Could not change Board's Image"}, 401

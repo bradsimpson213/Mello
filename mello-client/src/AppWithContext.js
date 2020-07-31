@@ -8,7 +8,7 @@ const AppWithContext = () => {
   const [user, setUser] = useState("");
   const [id, setId] = useState("");
   const [boardOrg, setBoardOrg] = useState({
-    board: { "boardName": "Loading...", "board_image": "url"},
+    board: { "boardName": "Loading...", "board_image": ""},
     // cards: {
     //   "card-1": { id: "card-1", title: "Loading..." },
     //   // "card-2": { id: "card-2", title: "Loading..." },
