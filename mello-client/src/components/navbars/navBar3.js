@@ -41,7 +41,7 @@ const NavBar3 = () => {
     const [music, toggleMusic] = useToggle(user.music);
     const [email, updateEmail] = useState(user.email);
     const [name, updateName] = useState(user.name);
-    const [boardImage, updateBoardImage] = useInputState();
+    const [boardImage, updateBoardImage] = useInputState(boardOrg.board.boardImage);
     const [boardName, setBoardName] = useState('');
     let history = useHistory();
 
@@ -197,7 +197,7 @@ const NavBar3 = () => {
                   <FormControl >
                     <FormLabel htmlFor="backImage">Change Board Background Image</FormLabel>
                     <InputGroup>
-                      <Select icon={MdArrowDropDown} id="backImage" placeholder="Select Background" onChange={ updateBoardImage }>
+                      <Select icon={MdArrowDropDown} id="backImage" placeholder="Current Background" onChange={ updateBoardImage }>
                         <option value="https://mello-zen-images.s3.amazonaws.com/zen-2.jpg">Bamboo Forrest</option>
                         <option value="https://mello-zen-images.s3.amazonaws.com/zen-3.jpg">Stones on Water</option>
                         <option value="https://mello-zen-images.s3.amazonaws.com/zen-4.jpg">Stones on Sand</option>
@@ -216,7 +216,7 @@ const NavBar3 = () => {
                     </InputGroup>
                   </FormControl>
                   {boardImage ? (<div className={styles.backImage} style={{ backgroundImage: `url(${boardImage})` }}></div>)
-                    : (<div className={styles.backImage} >Select A Board Image to Display</div>)}
+                  : (<div className={styles.backImage} style={{ backgroundImage: `url(${boardOrg.board.boardImage})`}} ></div>)}
                   <Button type="submit" >Update Background</Button>
                 </form>
                 <Divider />

@@ -1,8 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import useToggle from './hooks/useToggle';
 import useInputState from './hooks/useInputState';
-import { Button, CloseButton, Collapse, Editable,
-     EditableInput, EditablePreview, Textarea } from '@chakra-ui/core';
+import { Button, ButtonGroup, CloseButton, Collapse, Editable, 
+       EditableInput, EditablePreview, Flex, IconButton, Textarea } from '@chakra-ui/core';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
 import NaturalDragAnimation from "natural-drag-animation-rbdnd";
 import { baseUrl } from "../config";
@@ -15,9 +15,11 @@ const List = (props) => {
     const [show, toggleShow] = useToggle(false);
     const [cardText, updateCardText, resetText] = useInputState();
     const [hidden, toggleHidden] = useToggle(false);
-    const [listText, setListText] = useInputState(props.list.title);
+    const [listText, setListText] = useState(props.list.title);
 
     const { boardOrg, setBoardOrg, token } = useContext(appContext);
+
+    const firstField = useRef();
 
     const addCard = (e) => {
         e.preventDefault();
@@ -59,6 +61,19 @@ const List = (props) => {
     };
   };
 
+  // const EditableControls = ({ isEditing, onSubmit, onCancel, onRequestEdit }) => {
+  //   return isEditing ? (
+  //     <ButtonGroup justifyContent="right" size="sm">
+  //       <IconButton icon="check" onClick={onSubmit} />
+  //       <IconButton icon="close" onClick={onCancel} />
+  //     </ButtonGroup>
+  //   ) : (
+  //       <Flex justifyContent="right">
+  //         <IconButton size="sm" icon="edit" onClick={onRequestEdit} />
+  //       </Flex>
+  //     );
+  // };
+
 
     const hideCollapse = () => {
         resetText();
@@ -87,15 +102,17 @@ const List = (props) => {
                 style={style}
               >
                 <div>
+                <>
                   <Editable
                     className={styles.listName}
-                    defaultValue="List Name..."
                     value={listText}
                     onChange={setListText}
+                
                   >
                     <EditablePreview />
                     <EditableInput />
                   </Editable>
+                  </>
                 </div>
                 <Droppable droppableId={props.list.id} type="card">
                   {(provided) => (
@@ -122,9 +139,10 @@ const List = (props) => {
                 >
                   Add another card
                 </Button>
-                <Collapse className={styles.collapseCard} isOpen={show}>
+                <Collapse className={styles.collapseCard} isOpen={show} initialFocusRef={firstField}>
                   <form onSubmit={addCard}>
                     <Textarea
+                      ref={firstField}
                       className={styles.textArea}
                       value={cardText}
                       onChange={updateCardText}
