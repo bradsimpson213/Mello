@@ -12,5 +12,4 @@ def zen_quote():
     print(data)
     quote = data[0]["q"]
     author = data[0]["a"]
-    print(quote, author)
     return { "quote": quote, "author": author }
