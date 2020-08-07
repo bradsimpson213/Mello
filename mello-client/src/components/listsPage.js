@@ -42,6 +42,7 @@ const ListsPage = () => {
     
     const addList = (e) => {
         e.preventDefault();
+        //need to have or get next available list ID from server
         const newListId = `list-${boardOrg.listOrder.length + 1}`;
         const newList = { id: newListId, title: listText, cardIds: [] };
         const newBoardOrg = {

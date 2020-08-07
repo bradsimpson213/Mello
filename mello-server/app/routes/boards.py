@@ -17,7 +17,7 @@ def get_baord_details(boardId):
     if board:
         cards_array = []
         blists = List.query.filter(List.boardId == board.id).all()
-# GET ALL CARDS FROM THE LISTS ON SELECTED BOARD AND FORMAT LISTS FOR CLIENT
+
         lists = {}
         for blist in blists:
             list_cards = Card.query.filter(Card.listId == blist.id).all()
