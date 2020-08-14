@@ -1,11 +1,11 @@
 .navBar2 {
     background: linear-gradient(135deg, #0079bf, #5067c5);
-    position: fixed;
+    position: sticky;
     top: 0;
     height: 60px;
     width: 100%;
     display: grid;
-    grid-template-columns: 0.1fr 0.5fr 0.1fr 1.5fr 0.1fr 2fr 1fr 3fr 3fr 0.5fr 0.1fr;
+    grid-template-columns: 0.1fr 0.5fr 0.1fr 1.5fr 0.1fr 2fr 1fr 3fr 3fr 0.3fr 0.1fr;
 }
 
 .homeIcon {

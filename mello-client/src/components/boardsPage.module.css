@@ -34,7 +34,8 @@
     grid-template-rows: auto;
     grid-template-areas: 
         "personal pboards"
-        "teams tboards";
+        "teams tboards"
+        "spacer spacer";
 }
 
 .personalTitle {
@@ -175,4 +176,10 @@
     color: red;
     font-weight: bold;
     font-size: large;
+}
+
+.spacer {
+     grid-area: "spacer";
+     height: 100vh;
+     width: 100%;
 }

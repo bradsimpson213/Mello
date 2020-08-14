@@ -182,6 +182,7 @@ const Boards = () => {
               </div>
             </div>
           </div>
+          <div className={styles.spacer}></div>
         </div>
       </>
     );

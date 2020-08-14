@@ -105,7 +105,7 @@ const NavBar2 = () => {
           src="https://mello-landing-images.s3.amazonaws.com/white-logo.png"
           alt="Mello Logo"
         />
-        <Avatar className={styles.avatar} name={user.name} src="" />
+        <Avatar size="sm" className={styles.avatar} name={user.name} src="" />
       </div>
     );
 };
