@@ -1,7 +1,8 @@
 .headerbar {
-   position: sticky;
+   position: fixed;
    top: 0;
-   left: 0;
+   height: 65px;
+   width: 100%;
    display: grid;
    grid-template-columns: 1fr 4fr 1fr 1fr;
    grid-template-rows: 1fr;
@@ -12,8 +13,10 @@
     grid-column-end: 2;
     align-self: center;
     justify-self: right;
-    height: 65px;
+    height: 50px;
     width: 180px;
+    padding-top: 5px;
+    padding-bottom: 5px;
  }
  
  .loginLink {

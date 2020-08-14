@@ -1,10 +1,14 @@
 .navBar3 {
     background: gray;
     height: 50px;
+    width: 100%;
+    position: fixed;
+    top: 0px;
     display: grid;
     grid-template-columns: 0.1fr 3.5fr 0.1fr 2fr 5fr 0.1fr 2fr 0.1fr;
     align-items: center;
     margin: none;
+    margin-top: 60px;
 }
 
 .boardName {
