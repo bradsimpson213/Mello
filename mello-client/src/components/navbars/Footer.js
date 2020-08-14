@@ -1,17 +1,19 @@
 import React from 'react';
-import { Link } from "react-router-dom";
-import { FaGithub, FaAngellist, FaLinkedin } from "react-icons/fa"
+import { Link } from '@chakra-ui/core';
+import { FaGithub, FaAngellist, FaLinkedin, FaEnvelope, FaUserTie } from 'react-icons/fa'
 import styles from './Footer.module.css'
 
 const Footer = () => {
 
     return(
-        <>
-            <Link href={github} icon={FaGithub} /> 
-            <Link href={angel} icon={FaAngellist} /> 
-            <Link href={linkedin} icon={FaLinkedin} /> 
-            <span>© Copyright 2020 by Brad Simpson. All rights reserved.</span>
-        </>
+        <div className={styles.footerContainer}>
+            <p className={styles.footerText}>© Copyright 2020 by Brad Simpson. All rights reserved.</p>
+            <Link href="https://github.com/bradsimpson213"><FaGithub className={styles.footerIcon} /></Link> 
+            <Link href="https://angel.co/u/brad-simpson-8"><FaAngellist className={styles.footerIcon} /></Link> 
+            <Link href="https://www.linkedin.com/in/brad-simpson-a6b1b7b2/"><FaLinkedin className={styles.footerIcon} /></Link>
+            <Link href="mailto:bradsimpson@icloud.com"><FaEnvelope className={styles.footerIcon} /></Link>
+            <Link href="https://brad-simpson-website.herokuapp.com/"><FaUserTie className={styles.footerIcon} /></Link>
+        </div>
     );    
 };
 

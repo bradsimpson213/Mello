@@ -80,7 +80,7 @@ const Landing = () => {
     };
 
     return (
-      <>
+      <div className={styles.landing}>
         <div className={styles.navBar}>
           <div className={styles.headerbar}>
             <img
@@ -190,7 +190,7 @@ const Landing = () => {
             <h2 className={styles.textDetail}>
               {" "}
               Mello's boards, lists, cards, and other components empower you to
-              mindfully oraganize and priortize your projects, or life goals in
+              oraganize and priortize your projects, or life goals in
               mindful ways.{" "}
             </h2>
             <div className={styles.emailSignUp}>
@@ -213,8 +213,7 @@ const Landing = () => {
             alt="Buddhist Temple"
           />
         </div>
-        <footer className={styles.footer}>© Copyright 2020 by Brad Simpson. All rights reserved.</footer>
-      </>
+      </div>
     );
 }
 

@@ -1,6 +1,15 @@
-body {
+body{
     background: linear-gradient(135deg, #0079bf, #5067c5);
     font-family: Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+.landing {
+    /* background: linear-gradient(135deg, #0079bf, #5067c5); */
+    box-sizing: border-box;
+    height: 100vh;
+    width: 100vw;
     padding: 0;
     margin: 0;
 }
@@ -102,11 +111,6 @@ body {
     width: 600px;
     grid-row-start: 2;
     grid-row-end: 4;    
-}
-
-.footer {
-    color: white;
-    text-align: center;
 }
 
 .drawerImage {

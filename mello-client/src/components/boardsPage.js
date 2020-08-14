@@ -58,10 +58,9 @@ const Boards = () => {
 
     const createBoard = async (e) => {
       e.preventDefault();
-
       
-    const board = { boardName, boardImage };
-      closeModal();
+      const board = { boardName, boardImage };
+        closeModal();
 
       const res = await fetch(`${baseUrl}/boards/create`, {
           method: "POST",
@@ -80,7 +79,6 @@ const Boards = () => {
       resetBoardName();
       resetBoardImage();
     }
-
 
     return (
       <>

@@ -224,12 +224,6 @@ const NavBar3 = () => {
                 
               </DrawerBody>
               <DrawerFooter>
-                <div>
-                  <p>This website was mindfully designed by Brad Simpson</p>
-                  <a href="https://brad-simpson-website.herokuapp.com/" target="_blank">
-                    Click Here to view my Personal Website
-                  </a>
-                </div>
               </DrawerFooter>
             </DrawerContent>
           </Drawer>

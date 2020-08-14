@@ -1,8 +1,8 @@
 import React, { useContext, useRef, useState } from 'react';
 import useToggle from './hooks/useToggle';
 import useInputState from './hooks/useInputState';
-import { Button, ButtonGroup, CloseButton, Collapse, Editable, 
-       EditableInput, EditablePreview, Flex, IconButton, Textarea } from '@chakra-ui/core';
+import { Button, CloseButton, Collapse, Editable, 
+       EditableInput, EditablePreview, Textarea } from '@chakra-ui/core';
 import { Draggable, Droppable } from 'react-beautiful-dnd';
 import NaturalDragAnimation from "natural-drag-animation-rbdnd";
 import { baseUrl } from "../config";
