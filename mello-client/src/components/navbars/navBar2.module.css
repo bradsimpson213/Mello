@@ -77,21 +77,24 @@
     grid-column: 9 / 10;
     height: 40px;
     color: white;
-    text-align: right;
-    align-items: flex-start;
-    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: 10px;
 }
 
 .quoteDetail {
     font-style: italic;
     font-size: 16px;
-    margin-bottom: 2px;
+    text-align: right;
+    margin-right: 10px;
 }
 
 .authorDetail {
     font-style: italic;
     font-size: 12px;
-    margin-top: 2px;
+    text-align: left;
+    margin-left: 5px;
 }
 
 .avatar {
