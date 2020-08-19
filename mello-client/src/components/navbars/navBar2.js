@@ -15,10 +15,21 @@ const NavBar2 = () => {
     const [icon, toggleIcon] = useToggle(true);
     const [boards, setBoards] = useState(null);
     const myAudio = document.getElementById('myAudio')
-
+    const [quote, setQuote] = useState("");
+    const [author, setAuthor] = useState("");
     const { user, token } = useContext(appContext);
     let history = useHistory();
     
+    //THIS USE EFFECT GETS NEW RANDOM QUOTE (ONLY ONCE ON MOUNT)
+    useEffect(() => {
+      (async () => {
+        const res = await fetch(`${baseUrl}/quotes`);
+        const data = await res.json();
+        setQuote(data.quote);
+        setAuthor(data.author);
+      })();
+    }, []);
+
     useEffect(() => {
       if (user) {
         loadBoards();
@@ -105,6 +116,10 @@ const NavBar2 = () => {
           src="https://mello-landing-images.s3.amazonaws.com/white-logo.png"
           alt="Mello Logo"
         />
+        <div className={styles.quoteBox}>
+          <p className={styles.quoteDetail}>{`"${quote}"`}</p>
+          <p className={styles.authorDetail}>{`-${author}`}</p>
+        </div>
         <Avatar size="sm" className={styles.avatar} name={user.name} src="" />
       </div>
     );

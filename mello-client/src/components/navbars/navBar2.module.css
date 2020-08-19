@@ -5,7 +5,7 @@
     height: 60px;
     width: 100%;
     display: grid;
-    grid-template-columns: 0.1fr 0.5fr 0.1fr 1.5fr 0.1fr 2fr 1fr 3fr 3fr 0.3fr 0.1fr;
+    grid-template-columns: 0.1fr 0.5fr 0.1fr 1.5fr 0.1fr 2fr 1fr 1.5fr 4.5fr 0.5fr 0.3fr 0.1fr;
 }
 
 .homeIcon {
@@ -73,7 +73,28 @@
     align-self: center;
 }
 
+.quoteBox {
+    grid-column: 9 / 10;
+    height: 40px;
+    color: white;
+    text-align: right;
+    align-items: flex-start;
+    margin-top: 5px;
+}
+
+.quoteDetail {
+    font-style: italic;
+    font-size: 16px;
+    margin-bottom: 2px;
+}
+
+.authorDetail {
+    font-style: italic;
+    font-size: 12px;
+    margin-top: 2px;
+}
+
 .avatar {
-    grid-column: 10 / 11;
+    grid-column: 11 / 12;
     align-self: center;
 }
