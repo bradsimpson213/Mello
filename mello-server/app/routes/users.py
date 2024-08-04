@@ -21,7 +21,7 @@ def user_login():
         user.last_login = datetime.datetime.now()
         db.session.commit()
         access_token = jwt.encode({'email': user.email}, Config.SECRET_KEY)
-        return {"access_token": access_token.decode('UTF-8'), 'user': user.to_dict()}
+        return {"access_token": access_token, 'user': user.to_dict()}
     else:
         return {"error": "Incorrect password"}, 401
 
@@ -54,7 +54,7 @@ def create_user():
         db.session.commit()
 
         access_token = jwt.encode({'email': user.email}, Config.SECRET_KEY)
-        return {"access_token": access_token.decode('UTF-8'), 'user': user.to_dict()}
+        return {"access_token": access_token, 'user': user.to_dict()}
     except AssertionError as message:
         print(str(message))
         return jsonify({"error": str(message)}), 400

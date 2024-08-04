@@ -7,20 +7,16 @@ verify_ssl = true
 autopep8 = "*"
 
 [packages]
-pylint = "*"
 flask = "*"
 python-dotenv = "*"
-pycodestyle = "*"
-rope = "*"
 alembic = "*"
 sqlalchemy = "*"
 flask-sqlalchemy = "*"
 flask-migrate = "*"
-psycopg2-binary = "*"
 flask-login = "*"
 pyjwt = "*"
 flask-cors = "*"
 requests = "*"
 
 [requires]
-python_version = "3.8"
+python_version = "3.9"
