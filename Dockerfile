@@ -34,7 +34,7 @@ COPY . .
 COPY --from=build-stage /mello-client/build/* app/static/
 
 RUN flask db upgrade
-RUN flas seed all 
+RUN flask seed all 
 
 CMD gunicorn app:app
 
