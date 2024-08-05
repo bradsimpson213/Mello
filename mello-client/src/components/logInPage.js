@@ -1,5 +1,4 @@
 import React, {useState, useContext } from "react";
-import useInputState from "./hooks/useInputState";
 import useToggle from './hooks/useToggle';
 import appContext from "../Context";
 import { Link, Redirect } from "react-router-dom";
@@ -7,7 +6,6 @@ import {
   Button,
   FormControl,
   FormLabel,
-  FormHelperText,
   Icon,
   Input, 
   InputGroup,
