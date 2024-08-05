@@ -30,7 +30,7 @@ def upgrade():
     )
 
     if environment == "production":
-        op.execute(f"ALTER TABLE terams SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE teams SET SCHEMA {SCHEMA};")
 
     # ### end Alembic commands ###
 
