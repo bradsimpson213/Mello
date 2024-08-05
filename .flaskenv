@@ -1,2 +1,2 @@
-FLASK_APP=mello.py
+FLASK_APP=app
 FLASK_ENV=production

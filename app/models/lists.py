@@ -1,11 +1,15 @@
-from ..models import db
+from ..models import db, environment, SCHEMA, add_prefix_for_prod
 
 
 class List(db.Model):
     __tablename__ = "lists"
+
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+
     id = db.Column(db.Integer, primary_key=True)
     list_name = db.Column(db.String(50), nullable=False)
-    boardId = db.Column(db.Integer, db.ForeignKey("boards.id"), nullable=False)
+    boardId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("boards.id")), nullable=False)
     card_order = db.Column(db.String(500), nullable=True)
     due_date = db.Column(db.DateTime)
     updated = db.Column(db.DateTime, nullable=False)

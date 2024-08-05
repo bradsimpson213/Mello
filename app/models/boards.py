@@ -1,15 +1,19 @@
-from ..models import db
+from ..models import db, environment, SCHEMA, add_prefix_for_prod
 from .teams import Team
 
 class Board(db.Model):
     __tablename__ = "boards"
+
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
+
     id = db.Column(db.Integer, primary_key=True)
-    userId = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    userId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     board_name = db.Column(db.String(50), nullable=False)
     board_image = db.Column(db.String(150), nullable=False)
     public = db.Column(db.Boolean, default=False)
     team = db.Column(db.Boolean, default=False)
-    teamId = db.Column(db.Integer, db.ForeignKey("teams.id"), nullable=True)
+    teamId = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("teams.id")), nullable=True)
     list_order = db.Column(db.String(500), nullable=True )
     updated = db.Column(db.DateTime, nullable=False)
     created = db.Column(db.DateTime, nullable=False)
