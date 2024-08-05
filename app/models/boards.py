@@ -1,4 +1,4 @@
-from ..models import db, environment, SCHEMA, add_prefix_for_prod
+from models import db, environment, SCHEMA, add_prefix_for_prod
 from .teams import Team
 
 class Board(db.Model):
