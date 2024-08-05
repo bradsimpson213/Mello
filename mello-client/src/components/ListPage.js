@@ -15,9 +15,9 @@ import List from './List';
 import appContext from '../Context';
 import { baseUrl } from "../config";
 import { buildBoardOrg } from "../utils";
-import styles from './ListsPage.module.css';
+import styles from './ListPage.module.css';
 
-const ListsPage = () => {
+const ListPage = () => {
     const [show, toggleShow] = useToggle(false);
     const [listText, updateListText, resetListText] = useInputState();
     const [hidden, toggleHidden] = useToggle(false);
@@ -255,4 +255,4 @@ const ListsPage = () => {
     );
 };
 
-export default ListsPage;
+export default ListPage;

@@ -13,11 +13,11 @@ import {
   InputRightElement,
   Stack, 
 } from "@chakra-ui/core";
-import styles from "./LoginPage.module.css";
+import styles from "./Login.module.css";
 import { baseUrl } from "../config";
 
 
-const LoginPage = () => {
+const Login = () => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState("");
     const [loggedIn, setLoggedIn] = useState("");
@@ -131,4 +131,4 @@ const LoginPage = () => {
     );
 };
 
-export default LoginPage;
+export default Login;
