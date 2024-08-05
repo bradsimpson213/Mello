@@ -1,5 +1,4 @@
 from app.models import db, User, environment, SCHEMA
-from werkzeug.security import generate_password_hash
 from sqlalchemy.sql import text
 from datetime import datetime
 
@@ -7,7 +6,7 @@ def seed_users():
     user_1 = User(
             name='Demo User', 
             email='demo@gmail.com',
-            hashed_password=generate_password_hash('demo1'), 
+            password='demo1', 
             notification=5, 
             music=True, 
             last_login=datetime.now(), 
@@ -17,7 +16,7 @@ def seed_users():
     user_2 = User(
             name='Brad Simpson', 
             email='bradsimpson@icloud.com',
-            hashed_password=generate_password_hash('konadog4'), 
+            password='konadog4', 
             notification=5,
             music=True, 
             last_login=datetime.now(),
