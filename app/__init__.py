@@ -4,6 +4,7 @@ from flask_cors import CORS
 from .config import Config
 from .models import db
 from .routes import users, quotes, boards, lists, cards
+from .seeds import seed_commands
 import os
 
 
@@ -26,6 +27,7 @@ app.register_blueprint(boards.bp)
 app.register_blueprint(lists.bp)
 app.register_blueprint(cards.bp)
 
+app.cli.add_command(seed_commands)
 
 # @app.route('/', defaults={'path': ''})
 # @app.route('/<path:path>')
