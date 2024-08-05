@@ -105,9 +105,9 @@ const ListPage = () => {
         toggleShow();
     };
 
-    const onDragStart = () => {
-        //add drag item tilt here will need to add onDrafStert={onDragStart} to component
-    };
+    // const onDragStart = () => {
+    //     //add drag item tilt here will need to add onDrafStert={onDragStart} to component
+    // };
 
     const onDragEnd = (result) => {
         //cancel drag item tilt here

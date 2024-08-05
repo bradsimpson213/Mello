@@ -1,4 +1,3 @@
-import { FaAssistiveListeningSystems } from "react-icons/fa";
 
 
 export const buildBoardOrg = (board, cards, lists) => {

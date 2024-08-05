@@ -1,4 +1,4 @@
-import React, { useRef, useContext, useState, useEffect } from 'react';
+import React, { useRef, useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
   Button,
@@ -45,7 +45,6 @@ const NavBar3 = () => {
     const [boardName, setBoardName] = useState('');
     let history = useHistory();
 
-    let count = 1;
     
     const logOutUser = () => {
       logout();
@@ -67,9 +66,9 @@ const NavBar3 = () => {
       setBoardName(data.boards.board_name);
     };
   
-    const mindBreak = () => {
-      alert("Time for a break! Meditate for a few minutes to clear your mind!")
-    };
+    // const mindBreak = () => {
+    //   alert("Time for a break! Meditate for a few minutes to clear your mind!")
+    // };
 
     // useEffect(() => {
     //   if (!user.notification) {

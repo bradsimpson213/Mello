@@ -8,11 +8,11 @@ from .seeds import seed_commands
 import os
 
 
-if os.environ.get("FLASK_ENV") == 'production':
-    app = Flask(__name__, static_folder='../mello-client/build/static',
-                static_url_path='/static')
-else:
-    app = Flask(__name__)
+# if os.environ.get("FLASK_ENV") == 'production':
+#     app = Flask(__name__, static_folder='../mello-client/build/static',
+#                 static_url_path='/static')
+# else:
+app = Flask(__name__)
 
 
 CORS(app)
