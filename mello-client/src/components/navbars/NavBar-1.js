@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@chakra-ui/core";
-import styles from './NavBar1.module.css'
+import styles from './NavBar-1.module.css'
 
 const NavBar1 = () => {
 

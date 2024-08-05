@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { Link } from "react-router-dom";
 import useInputState from './hooks/useInputState';
 import appContext from "../Context";
-import NavBar2 from './navbars/NavBar2';
+import NavBar2 from './navbars/NavBar-2';
 import {
   Button,
   FormControl,

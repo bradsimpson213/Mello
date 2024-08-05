@@ -28,7 +28,7 @@ import {
 import appContext from "../../Context";
 import { baseUrl } from "../../config";
 import { MdArrowDropDown } from 'react-icons/md';
-import styles from './NavBar3.module.css';
+import styles from './NavBar-3.module.css';
 import useToggle from '../hooks/useToggle';
 import useInputState from '../hooks/useInputState';
 

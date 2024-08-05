@@ -9,8 +9,8 @@ import {
 import useToggle from './hooks/useToggle';
 import useInputState from './hooks/useInputState';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
-import NavBar2 from './navbars/NavBar2';
-import NavBar3 from './navbars/NavBar3';
+import NavBar2 from './navbars/NavBar-2';
+import NavBar3 from './navbars/NavBar-3';
 import List from './List';
 import appContext from '../Context';
 import { baseUrl } from "../config";

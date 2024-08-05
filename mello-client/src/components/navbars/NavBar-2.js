@@ -5,7 +5,7 @@ import { FiHome } from 'react-icons/fi';
 import { FaTrello } from 'react-icons/fa';
 import { GoMute, GoUnmute } from 'react-icons/go';
 import { baseUrl } from "../../config";
-import styles from './NavBar2.module.css';
+import styles from './NavBar-2.module.css';
 import { Avatar, Button, Icon, Input, InputGroup, InputRightElement, 
     Menu, MenuButton, MenuList, MenuItem, Tooltip } from "@chakra-ui/core";
 import appContext from '../../Context'
