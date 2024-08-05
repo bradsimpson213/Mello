@@ -4,7 +4,7 @@ WORKDIR /mello-client
 COPY mello-client/. .
 
 # You have to set this because it should be set during build time.
-ARG REACT_APP_BASE_URL
+ARG REACT_APP_SERVER_URL
 
 # Build our React App
 RUN npm install
