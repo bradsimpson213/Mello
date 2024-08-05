@@ -1,4 +1,4 @@
-from flask import Flask, send_from_directory, request, redirect
+from flask import Flask, request, redirect
 from flask_migrate import Migrate
 from flask_cors import CORS
 from .config import Config
