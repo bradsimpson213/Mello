@@ -1,5 +1,5 @@
-from models import db, environment, SCHEMA, add_prefix_for_prod
-from .teams import Team
+from .db import db, environment, SCHEMA, add_prefix_for_prod
+
 
 class Board(db.Model):
     __tablename__ = "boards"
