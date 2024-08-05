@@ -25,7 +25,7 @@ import { GrAddCircle } from 'react-icons/gr';
 import { MdArrowDropDown } from 'react-icons/md';
 import { FaUserAlt, FaUsers } from 'react-icons/fa';
 import { baseUrl } from "../config";
-import styles from './BoardsPage.module.css';
+import styles from './Boards.module.css';
 
 const Boards = () => {
     const [boards, setBoards] = useState(null);
