@@ -20,8 +20,8 @@ def seed_users():
             hashed_password=generate_password_hash('konadog4'), 
             notification=5,
             music=True, 
-            last_login=datetime.datetime.now(),
-            created=datetime.datetime.now()
+            last_login=datetime.now(),
+            created=datetime.now()
     )
           
     all_users = [user_1, user_2]
